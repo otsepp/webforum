@@ -14,7 +14,9 @@ Aiheena on webfoorumi. Webfoorumissa on käyttäjiä, eri kategorioita aiheille 
 
 *	Aiheiden ja viestien luonti/poisto/muokkaus
 		Kaikki voi luoda
+
 		Aiheen luoja voi poistaa ja muokata
+
 		admin sekä moderator voi poistaa ja muokata muiden
 
 ![Tuntikirjanpito](/dokumentaatio/tuntikirjanpito.md)
