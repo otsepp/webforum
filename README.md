@@ -15,5 +15,6 @@ Aiheena on webfoorumi. Webfoorumissa on käyttäjiä, eri kategorioita aiheille 
 	-Aiheen luoja voi poistaa ja muokata
 	-admin sekä moderator voi poistaa ja muokata muiden
 
+![Tuntikirjanpito](/dokumentaatio/tuntikirjanpito.md)
 
 ![Kaavio](/dokumentaatio/KAAVIO.png)
