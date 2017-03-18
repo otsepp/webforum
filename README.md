@@ -13,6 +13,7 @@ Aiheena on webfoorumi. Webfoorumissa on käyttäjiä, eri kategorioita aiheille 
 *	Kategorian luonti/poisto/muokkaus (admin)
 
 *	Aiheiden ja viestien luonti/poisto/muokkaus
+		
 		Kaikki voi luoda
 
 		Aiheen luoja voi poistaa ja muokata
