@@ -4,7 +4,7 @@
 
 Aiheena on webfoorumi. Webfoorumissa on käyttäjiä, eri kategorioita aiheille joihin voidaan jättää viestejä. Käyttäjä on admin, moderaattori tai tavallinen käyttäjä.
 
-**Toiminnot (alustavat)***
+**Toiminnot (alustavat)**
 
 -Kirjautuminen (admin, moderator ja normaali käyttäjä)
 -Kategorian luonti/poisto/muokkaus (admin)
