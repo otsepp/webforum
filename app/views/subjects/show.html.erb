@@ -1,15 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1> <%= @subject.name %> </h1>
+<h1>
+<%= link_to "Categories", categories_path %> > 
+<%= link_to @subject.category.name, @subject.category %> > 
+<%= @subject.name %> 
+</h1>
 
 <% if !@first_message.nil? %>
 	<p>
 		<strong> OP: </strong>
-		<%= "#{@first_message.content}, t. #{@first_message.get_sender.username}" %>
+		<%= "#{@first_message.content}, t. " %>
+		<%= link_to @first_message.user.username, @first_message.user %> 
 	</p>
 	<ul>
 		<% @rest_of_messages.each do |message| %>
-			<p> <%= "#{message.content}, t. #{message.get_sender.username}" %> </p>
+			<p> <%= "#{message.content}, t. " %> 
+			<%= link_to message.user.username, message.user %> </p>
 		<% end %>
 	</ul>
 <% end %>
