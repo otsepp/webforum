@@ -13,9 +13,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
+    <p><%= f.label :username %> </p>
+    <p><%= f.text_field :username %> </p>
+
+	<%= f.label :admin %> (for testing) <br>
+	<%= f.check_box :admin %>
   </div>
+	
+
   <div class="actions">
     <%= f.submit %>
   </div>

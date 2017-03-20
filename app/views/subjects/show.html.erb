@@ -20,5 +20,8 @@
 	</ul>
 <% end %>
 
-<%= link_to 'Edit', edit_subject_path(@subject) %> |
-<%= link_to 'Back', subjects_path %>
+<% if current_user && current_user.admin %>
+	
+	<%= link_to 'Edit', edit_subject_path(@subject) %> |
+	<%= link_to 'Back', subjects_path %>
+<% end %>
