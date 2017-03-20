@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   root 'categories#index'
 
 get 'signup', to: 'users#new'
+get 'signin', to: 'sessions#new'
+get 'signout', to: 'sessions#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
