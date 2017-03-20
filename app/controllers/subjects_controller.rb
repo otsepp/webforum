@@ -10,6 +10,8 @@ class SubjectsController < ApplicationController
   # GET /subjects/1
   # GET /subjects/1.json
   def show
+	@first_message = Message.where(:subject_id => @subject.id).first
+	@rest_of_messages = Message.where(:subject_id => @subject.id).all[1..-1]
   end
 
   # GET /subjects/new

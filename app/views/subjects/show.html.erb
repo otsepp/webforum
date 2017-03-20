@@ -1,9 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @subject.name %>
-</p>
+<h1> <%= @subject.name %> </h1>
+
+<% if !@first_message.nil? %>
+	<p>
+		<strong> OP: </strong>
+		<%= "#{@first_message.content}, t. #{@first_message.get_sender.name}" %>
+	</p>
+	<ul>
+		<% @rest_of_messages.each do |message| %>
+			<p> <%= "#{message.content}, t. #{message.get_sender.name}" %> </p>
+		<% end %>
+	</ul>
+<% end %>
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
 <%= link_to 'Back', subjects_path %>
