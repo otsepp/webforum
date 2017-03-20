@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<div class="navibar">
+	<% if not session[:user_id].nil? %>
+ 		 <p><strong><%= User.find(session[:user_id]).username %></strong> signed in</p>
+	<% end %>
+</div>
+
 <%= yield %>
 
 </body>

@@ -5,11 +5,11 @@
 <% if !@first_message.nil? %>
 	<p>
 		<strong> OP: </strong>
-		<%= "#{@first_message.content}, t. #{@first_message.get_sender.name}" %>
+		<%= "#{@first_message.content}, t. #{@first_message.get_sender.username}" %>
 	</p>
 	<ul>
 		<% @rest_of_messages.each do |message| %>
-			<p> <%= "#{message.content}, t. #{message.get_sender.name}" %> </p>
+			<p> <%= "#{message.content}, t. #{message.get_sender.username}" %> </p>
 		<% end %>
 	</ul>
 <% end %>
