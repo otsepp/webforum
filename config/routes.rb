@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   resources :messages
   resources :subjects
   resources :categories
-=======
->>>>>>> 846aa8ff6def20c212f039933fd582cc14b926fd
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
