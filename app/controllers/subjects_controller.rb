@@ -19,11 +19,14 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/new
   def new
+	@subject = Subject.new
+	@category_id = params[:category_id]
+	@user_id = params[:user_id]
   end
 
   # GET /subjects/1/edit
   def edit
-	@has_rights = true
+	@has_rights = false
 	if current_user && current_user.can_edit_and_delete_subject(@subject)
 		@has_rights = true
 	end
@@ -77,6 +80,6 @@ class SubjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:name)
+      params.require(:subject).permit(:name, :category_id, :user_id)
     end
 end
