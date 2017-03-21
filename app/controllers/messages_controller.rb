@@ -27,9 +27,17 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
+<<<<<<< HEAD
     respond_to do |format|
       if @message.save
         format.html { redirect_to @message.subject, notice: 'Message was successfully created.' }
+=======
+
+    respond_to do |format|
+      if @message.save
+	binding.pry
+        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+>>>>>>> 8c535eb6d558dcaa0e6cf1c7c89c3b9dcb42317e
         format.json { render :show, status: :created, location: @message }
       else
         format.html { render :new }
@@ -72,6 +80,10 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
+<<<<<<< HEAD
       params.require(:message).permit(:content, :subject_id, :user_id)
+=======
+      params.require(:message).permit(:content)
+>>>>>>> 8c535eb6d558dcaa0e6cf1c7c89c3b9dcb42317e
     end
 end
