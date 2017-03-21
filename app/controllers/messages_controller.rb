@@ -42,7 +42,7 @@ class MessagesController < ApplicationController
   def update
     respond_to do |format|
       if @message.update(message_params)
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
+	format.html { redirect_to subject_path(@message.subject), notice: 'Message was successfully updated.' }
         format.json { render :show, status: :ok, location: @message }
       else
         format.html { render :edit }
@@ -53,12 +53,14 @@ class MessagesController < ApplicationController
 
   # DELETE /messages/1
   # DELETE /messages/1.json
-  def destroy
-    @message.destroy
-    respond_to do |format|
-      format.html { redirect_to messages_url, notice: 'Message was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+  def destroy	
+	subject = @message.subject
+	@message.destroy
+	respond_to do |format|
+	#format.html { redirect_to messages_url, notice: 'Message was successfully destroyed.' }
+	format.html { redirect_to subject_path(subject), notice: 'Message was successfully destroyed.' }
+	format.json { head :no_content }
+	end
   end
 
   private

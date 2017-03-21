@@ -23,6 +23,8 @@
 </table>
 </p>
 
+
+
 <% if current_user && current_user.admin %> 
 	<%= link_to 'Edit', edit_category_path(@category) %> |
 	<%= link_to 'Destroy', @category, method: :delete, data: { confirm: 'Are you sure?' } %></td>

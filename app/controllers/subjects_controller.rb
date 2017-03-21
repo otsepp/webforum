@@ -23,8 +23,7 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/1/edit
   def edit
-	@subject = Subject.new
-	@has_rights = false
+	@has_rights = true
 	if current_user && current_user.can_edit_and_delete_subject(@subject)
 		@has_rights = true
 	end
@@ -34,7 +33,6 @@ class SubjectsController < ApplicationController
   # POST /subjects.json
   def create
     @subject = Subject.new(subject_params)
-
     respond_to do |format|
       if @subject.save
         format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
@@ -63,9 +61,10 @@ class SubjectsController < ApplicationController
   # DELETE /subjects/1
   # DELETE /subjects/1.json
   def destroy
+	category = @subject.category
     @subject.destroy
     respond_to do |format|
-      format.html { redirect_to subjects_url, notice: 'Subject was successfully destroyed.' }
+      format.html { redirect_to category_path(category), notice: 'Subject was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
