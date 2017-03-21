@@ -14,7 +14,9 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    @message = Message.new
+   	@message = Message.new
+	@subject_id = params[:subject_id]
+	@user_id = params[:user_id]
   end
 
   # GET /messages/1/edit
@@ -28,6 +30,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
+	binding.pry
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }
       else

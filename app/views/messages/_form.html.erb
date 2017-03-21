@@ -1,4 +1,3 @@
-
 <%= form_for(@message) do |f| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
@@ -15,6 +14,14 @@
   <div class="field">
     <%= f.label :content %><br>
     <%= f.text_area :content %>
+
+	<% binding.pry %>
+
+	<% if creating %>
+		<%= f.hidden_field :subject_id, :value => @subject_id %>
+		<%= f.hidden_field :user_id, :value => @user_id %>
+	<% end %>
+
   </div>
   <div class="actions">
     <%= f.submit %>
