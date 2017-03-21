@@ -10,17 +10,24 @@ class SubjectsController < ApplicationController
   # GET /subjects/1
   # GET /subjects/1.json
   def show
-	@first_message = Message.where(:subject_id => @subject.id).first
-	@rest_of_messages = Message.where(:subject_id => @subject.id).all[1..-1]
+	@messages = Message.where(:subject_id => @subject.id)
+	@has_rights = false
+	if current_user && current_user.can_edit_and_delete_subject(@subject)
+		@has_rights = true
+	end
   end
 
   # GET /subjects/new
   def new
-    @subject = Subject.new
   end
 
   # GET /subjects/1/edit
   def edit
+	@subject = Subject.new
+	@has_rights = false
+	if current_user && current_user.can_edit_and_delete_subject(@subject)
+		@has_rights = true
+	end
   end
 
   # POST /subjects

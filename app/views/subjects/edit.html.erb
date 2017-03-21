@@ -1,6 +1,8 @@
-<h1>Editing Subject</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @subject %> |
-<%= link_to 'Back', subjects_path %>
+<% if @has_rights %>
+	<h1>Editing Subject</h1>
+	<%= render 'form' %>
+<% else %>
+	<%= render 'lacking_rights_partial' %>
+<% end %>

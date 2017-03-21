@@ -6,22 +6,27 @@
 <%= @subject.name %> 
 </h1>
 
-<% if !@first_message.nil? %>
-	<p>
-		<strong> OP: </strong>
-		<%= "#{@first_message.content}, t. " %>
-		<%= link_to @first_message.user.username, @first_message.user %> 
-	</p>
-	<ul>
-		<% @rest_of_messages.each do |message| %>
-			<p> <%= "#{message.content}, t. " %> 
-			<%= link_to message.user.username, message.user %> </p>
-		<% end %>
-	</ul>
+
+<% @messages.each do |message| %>
+	<% if message == @messages.first %>
+		<strong>OP:</strong>
+	<% else %>
+		<strong>-</strong>
+	<% end %>
+	<%= "#{message.content}, t. " %> 
+	<%= link_to message.user.username, message.user %>
+	
+	<% if current_user && current_user.can_edit_message(message) %>
+		<%= link_to 'EDIT', edit_message_path(message) %>
+	<% end %>
+	<% if current_user && current_user.can_delete_message(message) %>
+		<%= link_to 'DELETE', message, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% end %>
+	
+	<p></p>
 <% end %>
 
-<% if current_user && current_user.admin %>
-	
-	<%= link_to 'Edit', edit_subject_path(@subject) %> |
-	<%= link_to 'Back', subjects_path %>
+<% if @has_rights %>
+	<%= link_to 'Edit', edit_subject_path(@subject) %>
+	<%= link_to 'Destroy', @subject, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

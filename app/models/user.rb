@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 	validates :username, presence: true, uniqueness: true
 
 	#vain admin ja mod
-	def can_edit_or_delete_subject(subject)
+	def can_edit_and_delete_subject(subject)
 		if admin
 			return true
 		end
