@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+<%= link_to "Categories", categories_path %> > 
+<%= link_to @subject.category.name, @subject.category %> > 
+<%= @subject.name %> 
+</h1>
+
+
+<% @messages.each do |message| %>
+	<% if message == @messages.first %>
+		<strong>OP:</strong>
+	<% else %>
+		<strong>-</strong>
+	<% end %>
+	<%= "#{message.content}, t. " %> 
+	<%= link_to message.user.username, message.user %>
+	
+	<% if current_user && current_user.can_edit_message(message) %>
+		<%= link_to 'EDIT', edit_message_path(message) %>
+	<% end %>
+	<% if current_user && current_user.can_delete_message(message) %>
+		<%= link_to 'DELETE', message, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% end %>
+	
+	<p></p>
+<% end %>
+
+<% if current_user %>
+	<p><%= link_to "+ new message", new_message_path(:subject_id => @subject.id, :user_id => current_user.id) %></p>
+<% end %>
+
+<% if @has_rights %>
+	<%= link_to 'Edit', edit_subject_path(@subject) %>
+	<%= link_to 'Destroy', @subject, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
