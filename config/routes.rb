@@ -14,8 +14,6 @@ get 'signup', to: 'users#new'
 get 'signin', to: 'sessions#new'
 get 'signout', to: 'sessions#destroy'
 
-get 'opensubject', to: 'subjects#new'
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -20,6 +20,9 @@ class SubjectsController < ApplicationController
   # GET /subjects/new
   def new
 	@subject = Subject.new
+	
+	@subject.messages.build
+
 	@category_id = params[:category_id]
 	@user_id = params[:user_id]
   end
@@ -80,6 +83,6 @@ class SubjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:name, :category_id, :user_id)
+      params.require(:subject).permit(:name, :category_id, :user_id, messages_attributes: [:id, :created_at, :update_at, :subject_id, :content, :user_id])
     end
 end

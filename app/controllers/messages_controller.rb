@@ -26,6 +26,9 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
+
+	binding.pry
+
     @message = Message.new(message_params)
     respond_to do |format|
       if @message.save
