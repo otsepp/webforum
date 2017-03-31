@@ -8,19 +8,29 @@
 </head>
 <body>
 
-<div class="navibar">
-	<% if current_user %>
-		<strong><%= link_to current_user.username, current_user %></strong> signed in
-		</br>
-		<div><%= link_to "sign out", signout_path %></div>
-	<% else  %>
-		<div><%= link_to "sign in", signin_path %></div>
-		<div><%= link_to "sign up", signup_path %></div>
-	<% end %>
-	<div> <%= link_to "home", :root %> </div>
+<div class="navibar" >
+	<%= link_to image_tag(asset_path("webforum-logo.png")), :root%>
+	<!--<%= link_to "Webforum", :root %>-->	
+
+	<div class="navibar-user">
+		<% if current_user %>
+			<%= link_to current_user.username, current_user %> signed in
+			<%= link_to "sign out", signout_path %>
+		<% else  %>
+			<%= link_to "sign in", signin_path %>
+			<%= link_to "sign up", signup_path %>
+		<% end %>
+	</div>
 </div>
 
-<%= yield %>
+<p id="notice" class="notice"><%= notice %></p>
+
+<div class="content">
+
+	
+	<%= yield %>
+
+</div>
 
 </body>
 </html>

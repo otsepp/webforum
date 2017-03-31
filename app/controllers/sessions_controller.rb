@@ -15,7 +15,7 @@ class SessionsController < ActionController::Base
 
 	def destroy
 		session[:user_id] = nil
-		redirect_to :root
+		redirect_to :back
 	end
 
 end
