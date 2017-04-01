@@ -1,14 +1,18 @@
 
-
-
 <table>
 	<thead>
-		<th><p class="table-header-text">Categories</p></th>
+		<th><strong>Categories</strong></th>
+		<th><strong>Subjects</strong></th>
+		<th><strong>Messages</strong></th>
+		<th><strong>Last message</strong></th>
 	</thead>
 	<tbody>
 		<% @categories.each do |category| %>
       			<tr>
-        		<td><%= link_to category.name, category %></td>
+        			<td><%= link_to category.name, category %></td>
+				<td><%= category.subjects.count %></td>
+				<td><%= category.messages.count %></td>
+				<td><%= category.last_message %></td>
       			</tr>
    		 <% end %>
 	</tbody>

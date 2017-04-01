@@ -62,10 +62,6 @@ table, th, tr, td {
 	border-collapse: collapse;
 }
 
-th {
-	width: 1%;
-}
-
 input[type="submit"] {
 	background-color: white; 
 	border: 1px solid black;
