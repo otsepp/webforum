@@ -1,6 +1,6 @@
 
 <% if current_user && current_user.admin %>
-	<h1>New Category</h1>
+	<h2>Creating a New Category</h2>
 	<%= render 'form' %>
 <% else %>
 	<%= render 'lacking_rights_partial' %>

@@ -1,18 +1,18 @@
 
-<table style="width: 100%">
+<table>
 	<thead>
-		<th style="width: 300px;"><strong>Categories</strong></th>
-		<th><strong>Subjects</strong></th>
+		<th class="wide-table-header"><strong>Category</strong></th>
+		<th><strong>Subject</strong></th>
 		<th><strong>Messages</strong></th>
 		<th><strong>Last message</strong></th>
 	</thead>
 	<tbody>
 		<% @categories.each do |category| %>
       			<tr>
-        			<td style="text-align: left;"><%= link_to category.name, category %></td>
-				<td style="text-align: center;"><%= category.subjects.count %></td>
-				<td style="text-align: center;"><%= category.messages.count %></td>
-				<td style="text-align: center;"><%= category.last_message %></td>
+        			<td><%= link_to category.name, category %></td>
+				<td class="centered-data-row"><%= category.subjects.count %></td>
+				<td  class="centered-data-row"><%= category.messages.count %></td>
+				<td  class="centered-data-row"><%= category.last_message %></td>
       			</tr>
    		 <% end %>
 	</tbody>
@@ -22,5 +22,5 @@
 <br>
 
 <% if current_user && current_user.admin %>
-	<%= link_to 'New Category', new_category_path %>
+	<%= link_to "new category", new_category_path, class: "link-button" %>
 <% end %>

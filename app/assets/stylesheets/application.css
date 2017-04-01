@@ -18,7 +18,8 @@
 	margin: auto;
 	width: 70%;
 	padding: 15px;
-	border: 1px solid black;
+	border: 2px solid black;
+	border-style: groove;
 }
 
 .navibar-logo {
@@ -53,8 +54,15 @@ div [type="navibar-user-control"] {
 .content {
 	margin: auto;
     	width: 50%;
-    	border: 1px solid black;
+
+    	border: 2px solid black;
+	border-style: groove;
+
     	padding: 10px;
+}
+
+table {
+	width: 100%;
 }
 
 table, th, tr, td {
@@ -62,23 +70,68 @@ table, th, tr, td {
 	border-collapse: collapse;
 }
 
+td {
+	padding: 3px 6px;
+}
+
+td.centered-data-row {
+	text-align:center
+}
+
+th.wide-table-header {
+	width: 600px;
+}
+
 input[type="submit"] {
-	background-color: white; 
+	background-color: lightgreen; 
 	border: 1px solid black;
 	color: black;
 	padding: 10px 25px;
     	font-size: 16px;
 }	
 
+input[type="text"] {	
+	background-color: white; 
+	border: 1px solid gray;
+	color: black;
+	padding: 5px;
+}
+
+.link-button {
+	background-color: white;
+	border: 3px solid black;
+	border-style: ridge;
+	width: auto;
+	display: inline;
+	padding: 3px;
+	text-decoration: none;
+}
+
+.link-button[type="edit-button"] {
+	background-color: lightblue;
+	border-color; DarkBlue;
+}
+
+.link-button[type="delete-button"] {
+	background-color: IndianRed;
+	border-color: DarkRed;
+}
+
 .table-header-text {
 	display: inline;
  	font-size: 120%
+}
+
+.nav-tree {
+	font-weight: 600;
 }
 
 .message-div {
 	padding: 10px;
 	border: 1px solid black;
 }
+
+
 
 
 

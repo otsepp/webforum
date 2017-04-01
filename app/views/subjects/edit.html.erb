@@ -1,7 +1,7 @@
 
 
 <% if @has_rights %>
-	<h1>Editing Subject</h1>
+	<h2>Editing Subject</h2>
 	<%= render 'form', { :creating => false } %>
 <% else %>
 	<%= render 'lacking_rights_partial' %>

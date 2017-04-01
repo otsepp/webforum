@@ -1,21 +1,26 @@
-<p id="notice"><%= notice %></p>
 
-<h3>	
-<%= link_to "Categories", categories_path %> > 
-<%= @category.name %>	
-</h3>
+<div class="nav-tree">	
+	<%= link_to "Categories", categories_path %> > 
+	<%= @category.name %>	
+</div>
 
 <p>
 <table>
 	<thead>
 		<tr>
-			<th><p class="table-header-text">Subjects</p></th>
+			<th class="wide-table-header">Subject</th>	
+			<th>Created by</th>
+			<th>Messages</th>
+			<th>Last message</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @subjects.each do |subject| %>
 			<tr>
 				<td> <%= link_to subject.name, subject %> </td>
+				<td class="centered-data-row"><%= link_to subject.user.username, subject.user %></td>
+				<td class="centered-data-row"><%= subject.messages.count %></td>
+				<td class="centered-data-row"><%= subject.last_message %></td>			
 			</tr>
 		<% end %>
 	</tbody>
@@ -23,11 +28,13 @@
 </p>
 
 <% if current_user %>
-	<p><%= link_to"+ new subject", new_subject_path(:category_id => @category.id, :user_id => current_user.id) %></p>
+	<%= link_to "new subject", new_subject_path(:category_id => @category.id, :user_id => current_user.id),
+		class: "link-button" %>
+	<br style="margin-bottom:40px">
 <% end %>
 
 <% if current_user && current_user.admin %> 
-	<%= link_to 'Edit', edit_category_path(@category) %> |
-	<%= link_to 'Destroy', @category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<%= link_to 'Edit', edit_category_path(@category), class: "link-button", type:"edit-button" %> 
+	<%= link_to 'Destroy', @category, method: :delete, data: { confirm: 'Are you sure?' }, class:"link-button", type: "delete-button" %></td>
 <% end %>
 
