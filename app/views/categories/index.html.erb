@@ -1,7 +1,7 @@
 
-<table>
+<table style="width: 100%">
 	<thead>
-		<th><strong>Categories</strong></th>
+		<th style="width: 300px;"><strong>Categories</strong></th>
 		<th><strong>Subjects</strong></th>
 		<th><strong>Messages</strong></th>
 		<th><strong>Last message</strong></th>
@@ -9,10 +9,10 @@
 	<tbody>
 		<% @categories.each do |category| %>
       			<tr>
-        			<td><%= link_to category.name, category %></td>
-				<td><%= category.subjects.count %></td>
-				<td><%= category.messages.count %></td>
-				<td><%= category.last_message %></td>
+        			<td style="text-align: left;"><%= link_to category.name, category %></td>
+				<td style="text-align: center;"><%= category.subjects.count %></td>
+				<td style="text-align: center;"><%= category.messages.count %></td>
+				<td style="text-align: center;"><%= category.last_message %></td>
       			</tr>
    		 <% end %>
 	</tbody>
