@@ -4,4 +4,8 @@ class Message < ActiveRecord::Base
 
 	validates :content, presence: true 
 
+	def created_at_formatted
+		return created_at.strftime("%H:%M:%S - %d.%m.%y")
+	end	
+
 end

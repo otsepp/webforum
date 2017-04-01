@@ -126,10 +126,24 @@ input[type="text"] {
 	font-weight: 600;
 }
 
-.message-div {
-	padding: 10px;
+.message-top-bar {
 	border: 1px solid black;
+	padding: 4px 3px;
+	background-color: lightgray;
 }
+
+.message-top-bar-date {
+	display: inline;
+	position: relative;	
+	float: right;
+	top: -13px;
+}
+
+.message-content-bar {
+	border: 1px solid black;
+	padding: 5px;
+}
+
 
 
 
