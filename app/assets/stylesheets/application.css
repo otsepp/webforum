@@ -21,10 +21,27 @@
 	border: 1px solid black;
 }
 
-.navibar-user {
-	display: inline;
+.navibar-logo {
+	margin: -20px;
+	padding-left: 15px;
 	position: relative;
-	left: 75%;
+	top: 9px;
+}
+
+.navibar-user-control-top {
+	position: relative; 
+	float: right;
+	top: -30px;	
+}
+
+.navibar-user-control-bottom {
+	position: relative; 
+	float: right;
+	top: -30px;
+}
+
+div [type="navibar-user-control"] {
+	clear: right;
 }
 
 .notice {
@@ -48,6 +65,14 @@ table, th, tr, td {
 th {
 	width: 1%;
 }
+
+input[type="submit"] {
+	background-color: white; 
+	border: 1px solid black;
+	color: black;
+	padding: 10px 25px;
+    	font-size: 16px;
+}	
 
 .table-header-text {
 	display: inline;

@@ -13,15 +13,14 @@
   <% end %>
 
   <div class="field">
-    <p><%= f.label :username %> </p>
+    <strong><%= f.label :username %> </strong>
     <p><%= f.text_field :username %> </p>
-
-	<%= f.label :admin %> (for testing) <br>
+	<strong><%= f.label :admin %><strong> (for testing) <br>
 	<%= f.check_box :admin %>
   </div>
 	
 
   <div class="actions">
-    <%= f.submit %>
+ 	  <%= f.submit %>
   </div>
 <% end %>
