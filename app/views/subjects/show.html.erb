@@ -13,18 +13,22 @@
 		<p class="message-top-bar-date"><%= message.created_at_formatted%></p>
 	</div>
 
-	<div class="message-content-bar">
-		<div class="message-content-bar-content">
+	<div class="message-bottom-bar">
+		<div style="padding-bottom:5px;">
+		</div>
+
+		<div class="message-bottom-bar-content">
 			<%= simple_format(message.content) %>
 		</div>
 
-		<div class="message-content-bar-signature">
-			<p style="margin: 0px;">---</p>
-			I'm not a gamer becuase I don't have a life,<br>
-			I'm a gamer because I have many.
-		</div>
+		<% if !message.user.signature.nil? %>
+			<div class="message-bottom-bar-signature">
+				<p>---</p>
+				<%= simple_format(message.user.signature) %>
+			</div>
+		<% end %>
 
-		<div class="message-content-bar-btns"> 
+		<div class="message-bottom-bar-btns"> 
 			<% if current_user && current_user.can_edit_message(message) %>
 				<%= link_to 'edit', edit_message_path(message), class: "link-button", type:"edit-button" %>
 			<% end %>
@@ -35,7 +39,6 @@
 
 	</div>
 <% end %>
-
 
 <% if current_user %>
 	<p><%= link_to "new message", new_message_path(:subject_id => @subject.id, :user_id => current_user.id), class:"link-button" %></p>

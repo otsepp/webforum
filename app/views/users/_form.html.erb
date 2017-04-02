@@ -1,4 +1,3 @@
-
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -13,12 +12,19 @@
   <% end %>
 
   <div class="field">
-    <strong><%= f.label :username %> </strong>
-    <p><%= f.text_field :username %> </p>
+	<strong><%= f.label :username %> </strong>
+	<p><%= f.text_field :username %> </p>
+
 	<strong><%= f.label :admin %><strong> (for testing) <br>
 	<%= f.check_box :admin %>
+
+	<% if creating %>
+		<br>
+		<strong><%= f.label :signature %> </strong>
+    		<p><%= f.text_area :signature %> </p>
+	<% end %>
+
   </div>
-	
 
   <div class="actions">
  	  <%= f.submit %>

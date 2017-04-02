@@ -54,10 +54,8 @@ div [type="navibar-user-control"] {
 .content {
 	margin: auto;
     	width: 50%;
-
     	border: 2px solid black;
 	border-style: groove;
-
     	padding: 10px;
 }
 
@@ -139,22 +137,25 @@ input[type="text"] {
 	top: -13px;
 }
 
-.message-content-bar {
+.message-bottom-bar {
 	border: 1px solid black;
 	padding: 5px;
 }
 
-.message-content-bar-content p {
-	margin: 0px;
-	
+.message-bottom-bar-content, .message-bottom-bar-signature {
+	width: 80%;
 }
 
-.message-content-bar-signature {
+.message-bottom-bar-content p, .message-bottom-bar-signature p {
+	margin: 0px;
+}
+
+.message-bottom-bar-signature {
 	color: gray;
 	width: 60%;	
 }
 
-.message-content-bar-btns {
+.message-bottom-bar-btns {	
 	position: relative;
 	top: -20px;
 	float: right;
