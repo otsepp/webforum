@@ -144,10 +144,22 @@ input[type="text"] {
 	padding: 5px;
 }
 
+.message-content-bar-content p {
+	margin: 0px;
+	
+}
 
+.message-content-bar-signature {
+	color: gray;
+	width: 60%;	
+}
 
-
-
+.message-content-bar-btns {
+	position: relative;
+	top: -20px;
+	float: right;
+	margin-bottom: -20px;
+}
 
 
 

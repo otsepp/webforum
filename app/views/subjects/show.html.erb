@@ -7,44 +7,41 @@
 
 <p>
 <% @messages.each do |message| %>
-	
+
 	<div class="message-top-bar">
 		<%= link_to message.user.username, message.user %>
 		<p class="message-top-bar-date"><%= message.created_at_formatted%></p>
 	</div>
+
 	<div class="message-content-bar">
-		<%= message.content %>
+		<div class="message-content-bar-content">
+			<%= simple_format(message.content) %>
+		</div>
+
+		<div class="message-content-bar-signature">
+			<p style="margin: 0px;">---</p>
+			I'm not a gamer becuase I don't have a life,<br>
+			I'm a gamer because I have many.
+		</div>
+
+		<div class="message-content-bar-btns"> 
+			<% if current_user && current_user.can_edit_message(message) %>
+				<%= link_to 'edit', edit_message_path(message), class: "link-button", type:"edit-button" %>
+			<% end %>
+			<% if current_user && current_user.can_delete_message(message) %>
+				<%= link_to 'delete', message, method: :delete, data: { confirm: 'Are you sure?' }, class: "link-button", type:"delete-button" %>
+			<% end %>
+		</div>
+
 	</div>
-
 <% end %>
-<p>
 
-<p>-----</p>
-
-<% @messages.each do |message| %>
-	<% if message == @messages.first %>
-		<strong>OP:</strong>
-	<% else %>
-		<strong>-</strong>
-	<% end %>
-	<%= "#{message.content}, t. " %> 
-	<%= link_to message.user.username, message.user %>
-	
-	<% if current_user && current_user.can_edit_message(message) %>
-		<%= link_to 'EDIT', edit_message_path(message) %>
-	<% end %>
-	<% if current_user && current_user.can_delete_message(message) %>
-		<%= link_to 'DELETE', message, method: :delete, data: { confirm: 'Are you sure?' } %>
-	<% end %>
-	
-	<p></p>
-<% end %>
 
 <% if current_user %>
-	<p><%= link_to "+ new message", new_message_path(:subject_id => @subject.id, :user_id => current_user.id) %></p>
+	<p><%= link_to "new message", new_message_path(:subject_id => @subject.id, :user_id => current_user.id), class:"link-button" %></p>
 <% end %>
 
 <% if @has_rights %>
-	<%= link_to 'Edit', edit_subject_path(@subject) %>
-	<%= link_to 'Destroy', @subject, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<%= link_to 'edit', edit_subject_path(@subject), class:"link-button", type:"edit-button" %>
+	<%= link_to 'delete', @subject, method: :delete, data: { confirm: 'Are you sure?' }, class:"link-button", type:"delete-button" %>
 <% end %>
