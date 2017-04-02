@@ -107,7 +107,7 @@ input[type="text"] {
 
 .link-button[type="edit-button"] {
 	background-color: lightblue;
-	border-color; DarkBlue;
+	border-color: DarkBlue;
 }
 
 .link-button[type="delete-button"] {
