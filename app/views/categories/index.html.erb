@@ -1,4 +1,9 @@
 
+<% if current_user && current_user.admin %>
+	<%= link_to "new category", new_category_path, class: "link-button" %>
+	<div style="padding-bottom: 10px"></div>
+<% end %>
+
 <table>
 	<thead>
 		<th class="wide-table-header"><strong>Category</strong></th>
@@ -18,9 +23,3 @@
 	</tbody>
 
 </table>
-
-<br>
-
-<% if current_user && current_user.admin %>
-	<%= link_to "new category", new_category_path, class: "link-button" %>
-<% end %>

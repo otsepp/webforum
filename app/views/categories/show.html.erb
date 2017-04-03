@@ -3,34 +3,35 @@
 	<%= link_to "Categories", categories_path %> > 
 	<%= @category.name %>	
 </div>
+	
+	<% if current_user %>
+		<div style="padding-top:10px;"></div>		
+		<%= link_to "new subject", new_subject_path(:category_id => @category.id, :user_id => current_user.id), class: "link-button" %>
+	<% end %>
 
-<p>
-<table>
-	<thead>
-		<tr>
-			<th class="wide-table-header">Subject</th>	
-			<th>Created by</th>
-			<th>Messages</th>
-			<th>Last message</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @subjects.each do |subject| %>
+<% if !@subjects.empty? %>
+	<p>
+	<table>
+		<thead>
 			<tr>
-				<td> <%= link_to subject.name, subject %> </td>
-				<td class="centered-data-row"><%= link_to subject.user.username, subject.user %></td>
-				<td class="centered-data-row"><%= subject.messages.count %></td>
-				<td class="centered-data-row"><%= subject.last_message %></td>			
+				<th class="wide-table-header">Subject</th>	
+				<th>Created by</th>
+				<th>Messages</th>
+				<th>Last message</th>
 			</tr>
-		<% end %>
-	</tbody>
-</table>
-</p>
-
-<% if current_user %>
-	<%= link_to "new subject", new_subject_path(:category_id => @category.id, :user_id => current_user.id),
-		class: "link-button" %>
-	<br style="margin-bottom:40px">
+		</thead>
+		<tbody>
+			<% @subjects.each do |subject| %>
+				<tr>
+					<td> <%= link_to subject.name, subject %> </td>
+					<td class="centered-data-row"><%= link_to subject.user.username, subject.user %></td>
+					<td class="centered-data-row"><%= subject.messages.count %></td>
+					<td class="centered-data-row"><%= subject.last_message %></td>			
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	</p>
 <% end %>
 
 <% if current_user && current_user.admin %> 

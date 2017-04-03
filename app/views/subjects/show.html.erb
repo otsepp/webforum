@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag 'messages' %>
 
 <div class="nav-tree">	
 	<%= link_to "Categories", categories_path %> > 
@@ -7,8 +8,7 @@
 
 <p>
 <% @messages.each do |message| %>
-
-	<div class="message-top-bar">
+	<div class="message-top-bar" id="test"">
 		<%= link_to message.user.username, message.user %>
 		<p class="message-top-bar-date"><%= message.created_at_formatted%></p>
 	</div>

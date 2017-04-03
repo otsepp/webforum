@@ -1,0 +1,31 @@
+
+.message-top-bar {
+	border: 1px solid black;
+	padding: 4px 3px;
+}
+.message-top-bar-date {
+	display: inline;
+	position: relative;	
+	float: right;
+	top: -13px;
+}
+.message-bottom-bar {
+	border: 1px solid black;
+	padding: 5px;
+}
+.message-bottom-bar-content, .message-bottom-bar-signature {
+	width: 80%;
+}
+.message-bottom-bar-content p, .message-bottom-bar-signature p {
+	margin: 0px;
+}
+.message-bottom-bar-signature {
+	color: gray;
+	width: 60%;	
+}
+.message-bottom-bar-btns {	
+	position: relative;
+	top: -20px;
+	float: right;
+	margin-bottom: -20px;
+}
