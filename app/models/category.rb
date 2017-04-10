@@ -2,6 +2,8 @@ class Category < ActiveRecord::Base
 	has_many :subjects, dependent: :destroy
 	has_many :messages, through: :subjects, dependent: :destroy
 
+	has_many :moderators, class_name: "User", foreign_key: "moderator_category_id"
+
 	validates :name, presence: true, uniqueness: true
 
 	def last_message	

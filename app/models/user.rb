@@ -1,12 +1,13 @@
 class User < ActiveRecord::Base
 	has_many :messages
 	has_many :subjects
+	belongs_to :moderator_category, class_name: "Category"
 
 	validates :username, presence: true, uniqueness: true
 
 	#vain admin ja mod
 	def can_edit_and_delete_subject(subject)
-		if admin
+		if admin or moderator(subject.category)
 			return true
 		end
 		return false
@@ -27,5 +28,13 @@ class User < ActiveRecord::Base
 		end
 		return false;
 	end	
+
+	private
+	def moderator(category)
+		if moderator_category == category
+			return true
+		end
+	return false
+	end
 
 end
