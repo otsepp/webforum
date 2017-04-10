@@ -21,7 +21,7 @@
 	<strong><%= f.label :moderator_category_id %></strong> (testaus) <br>
 	<%= f.select :moderator_category_id, options_from_collection_for_select(@categories, :id, :name) %><br>
 
-	<% if creating %>
+	<% if !creating %>
 		<br>
 		<strong><%= f.label :signature %> </strong>
     		<p><%= f.text_area :signature %> </p>

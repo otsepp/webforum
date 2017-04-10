@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :edit]
 
   # GET /users
   # GET /users.json
@@ -15,7 +16,6 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-	@categories = Category.all
   end
 
   # GET /users/1/edit
@@ -66,6 +66,10 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
+
+	def set_categories
+		@categories = Category.all
+	end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
