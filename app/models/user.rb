@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	has_many :messages, dependent: :destroy
+	has_many :messages
 	has_many :subjects
 
 	validates :username, presence: true, uniqueness: true

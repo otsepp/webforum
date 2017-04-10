@@ -1,4 +1,4 @@
-# webforum
+# webforum (WPO Ruby on Rails -harjoitustyö)
 
 [Heroku](https://blueberry-surprise-52605.herokuapp.com/)
 
@@ -16,9 +16,9 @@ Aiheena on webfoorumi. Webfoorumissa on käyttäjiä, eri kategorioita aiheille 
 		
 		Kaikki voi luoda
 
-		Aiheen luoja voi poistaa ja muokata
+		Aiheen luoja voi muokata
 
-		admin sekä moderator voi poistaa ja muokata muiden
+		admin sekä moderator voi poistaa ja muokata muiden (moderator vain oman kategorian)
 
 ![Tuntikirjanpito](/dokumentaatio/tuntikirjanpito.md)
 

@@ -1,8 +1,8 @@
 class Category < ActiveRecord::Base
+	has_many :subjects, dependent: :destroy
+	has_many :messages, through: :subjects, dependent: :destroy
 
 	validates :name, presence: true, uniqueness: true
-	has_many :subjects, dependent: :destroy
-	has_many :messages, through: :subjects
 
 	def last_message	
 		if !messages.empty?
