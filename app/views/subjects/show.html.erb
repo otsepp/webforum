@@ -41,7 +41,7 @@
 <% end %>
 
 <% if current_user %>
-	<p><%= link_to "new message", new_message_path(:subject_id => @subject.id, :user_id => current_user.id), class:"link-button" %></p>
+	<p><%= link_to "new message", new_message_path(:subject_id => @subject.id, :user_id => current_user.id, :category_id => @subject.category.id), class:"link-button" %></p>
 <% end %>
 
 <% if @has_rights %>

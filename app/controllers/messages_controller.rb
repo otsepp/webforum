@@ -17,6 +17,7 @@ class MessagesController < ApplicationController
    	@message = Message.new
 	@subject_id = params[:subject_id]
 	@user_id = params[:user_id]
+	@category_id = params[:category_id]
   end
 
   # GET /messages/1/edit
@@ -72,6 +73,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:content, :subject_id, :user_id)
+      params.require(:message).permit(:content, :subject_id, :user_id, :category_id)
     end
 end

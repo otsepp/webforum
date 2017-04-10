@@ -26,6 +26,7 @@
 					<%= messages_form.label :content %><br>
 					<%= messages_form.text_area :content %>
 					<%= messages_form.hidden_field :user_id, :value => @user_id %>
+					<%= messages_form.hidden_field :category_id, :value => @category_id %>
 				</li>
 			<% end %>
 		</ul>

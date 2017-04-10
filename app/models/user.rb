@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
 	#admin, mod, ja viestin lähettäjä
 	def can_edit_message(message)
-		if admin or messages.include? message
+		if admin or moderator(message.category) or creator(message)
 			return true
 		end
 		return false
@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
 	#admin ja mod
 	def can_delete_message(message)
-		if admin
+		if admin or moderator(message.category)
 			return true
 		end
 		return false;
@@ -34,7 +34,15 @@ class User < ActiveRecord::Base
 		if moderator_category == category
 			return true
 		end
-	return false
+		return false
+	end
+
+	private
+	def creator(message) 
+		if id == message.user.id
+			return true
+		end
+		return false
 	end
 
 end
