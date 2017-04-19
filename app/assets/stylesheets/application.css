@@ -101,7 +101,6 @@ textarea {
 }
 .link-button {
 	background-color: white;
-	border: 3px solid black;
 	border-style: ridge;
 	width: auto;
 	display: inline;
@@ -111,9 +110,11 @@ textarea {
 .link-button[type="edit-button"] {
 	background-color: lightblue;
 	border-color: DarkBlue;
+	display: inline;
 }
 .link-button[type="delete-button"] {
 	background-color: IndianRed;
 	border-color: DarkRed;
+	display: inline;
 }
 

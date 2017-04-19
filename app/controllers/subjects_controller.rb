@@ -11,16 +11,31 @@ class SubjectsController < ApplicationController
   # GET /subjects/1.json
   def show
 	@messages = Message.where(:subject_id => @subject.id)
-
 	pages_and_messages = calculate_pages(@messages)
-	@pages = pages_and_messages.size
 
-	page = params[:page]	
+	page = params[:page]
+
 	if page.nil?
-		@messages = pages_and_messages[1]
+		@messages = pages_and_messages["1"]
+		page = "1"
 	else
 		@messages = pages_and_messages[page]
 	end
+
+	@page = Integer(page)
+	@last_page  = pages_and_messages.count
+
+	@has_prev_pages = false
+	@has_more_pages = false
+
+	if @page > 1
+		@has_prev_pages = true
+	end
+	if @last_page - @page > 0 
+		@has_more_pages = true
+	end
+
+	@last_page = "#{@last_page}"
 
 	@has_rights = false
 	if current_user && current_user.can_edit_and_delete_subject(@subject)
@@ -94,6 +109,9 @@ class SubjectsController < ApplicationController
 		start = 0
 		for page in 1..pages
 			last = start + page_length
+
+			
+
 			pages_and_messages["#{page}"] = messages[start, last]					
 			start = last 
 		end

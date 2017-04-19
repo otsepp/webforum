@@ -7,12 +7,28 @@
 </div>
 
 <% if current_user %>
-	<p><%= link_to "new message", new_message_path(:subject_id => @subject.id, :user_id => current_user.id, :category_id => @subject.category.id), class:"link-button" %></p>
+	<div class="new-message-box">
+		<%= link_to "new message", new_message_path(:subject_id => @subject.id, :user_id => current_user.id, :category_id => @subject.category.id), class:"link-button" %>
+	</div>
 <% end %>
+
+<div class="page-nav">
+	<% if @has_prev_pages %>
+		<%= link_to "<<", @subject, class:"page-nav-button" %>
+		<%= link_to "<", subject_path(@subject, :page => "#{@page - 1}"), class:"page-nav-button" %>
+	<% end %>
+
+	<div class="page-nav-button"><%= @page %></div>
+
+	<% if @has_more_pages %>
+		<%= link_to ">", subject_path(@subject, :page => "#{@page + 1}"), class:"page-nav-button" %>
+		<%= link_to ">>", subject_path(@subject, :page => @last_page), class:"page-nav-button" %>
+	<% end %>
+</div>
 
 <p>
 <% @messages.each do |message| %>
-	<div class="message-top-bar" id="test"">
+	<div class="message-top-bar">
 		<%= link_to message.user.username, message.user %>
 		<p class="message-top-bar-date"><%= message.created_at_formatted%></p>
 	</div>

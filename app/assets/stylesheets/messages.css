@@ -1,3 +1,6 @@
+.nav-tree {
+	padding-bottom: 10px;
+}
 
 .message-top-bar {
 	border: 1px solid black;
@@ -28,4 +31,22 @@
 	top: -20px;
 	float: right;
 	margin-bottom: -20px;
+}
+
+.new-message-box {
+	display: inline;
+}
+
+.page-nav {
+	display: inline;
+	position: relative;
+	float: right;
+}
+
+.page-nav-button {
+	display: inline;
+	text-decoration: none;
+	padding: 2px 5px;
+	background-color: lightgreen;
+	border-style: ridge;
 }

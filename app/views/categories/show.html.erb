@@ -23,7 +23,7 @@
 		<tbody>
 			<% @subjects.each do |subject| %>
 				<tr>
-					<td> <%= link_to subject.name, subject_path(subject, :page => 1) %> </td>
+					<td> <%= link_to subject.name, subject_path(subject) %> </td>
 					<td class="centered-data-row"><%= link_to subject.user.username, subject.user %></td>
 					<td class="centered-data-row"><%= subject.messages.count %></td>
 					<td class="centered-data-row"><%= subject.last_message %></td>			
