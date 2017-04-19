@@ -15,13 +15,13 @@
 <div class="page-nav">
 	<% if @has_prev_pages %>
 		<%= link_to "<<", @subject, class:"page-nav-button" %>
-		<%= link_to "<", subject_path(@subject, :page => "#{@page - 1}"), class:"page-nav-button" %>
+		<%= link_to "<", subject_path(@subject, :page => @page - 1), class:"page-nav-button" %>
 	<% end %>
 
 	<div class="page-nav-button"><%= @page %></div>
 
 	<% if @has_more_pages %>
-		<%= link_to ">", subject_path(@subject, :page => "#{@page + 1}"), class:"page-nav-button" %>
+		<%= link_to ">", subject_path(@subject, :page => @page + 1), class:"page-nav-button" %>
 		<%= link_to ">>", subject_path(@subject, :page => @last_page), class:"page-nav-button" %>
 	<% end %>
 </div>

@@ -13,17 +13,16 @@ class SubjectsController < ApplicationController
 	@messages = Message.where(:subject_id => @subject.id)
 	pages_and_messages = calculate_pages(@messages)
 
-	page = params[:page]
-
-	if page.nil?
-		@messages = pages_and_messages["1"]
-		page = "1"
-	else
-		@messages = pages_and_messages[page]
-	end
-
-	@page = Integer(page)
+	@page = params[:page]
 	@last_page  = pages_and_messages.count
+
+	if @page.nil?
+		@messages = pages_and_messages[1]
+		@page = 1
+	else
+		@page = Integer(@page)
+		@messages = pages_and_messages[@page]
+	end
 
 	@has_prev_pages = false
 	@has_more_pages = false
@@ -34,8 +33,6 @@ class SubjectsController < ApplicationController
 	if @last_page - @page > 0 
 		@has_more_pages = true
 	end
-
-	@last_page = "#{@last_page}"
 
 	@has_rights = false
 	if current_user && current_user.can_edit_and_delete_subject(@subject)
@@ -109,15 +106,12 @@ class SubjectsController < ApplicationController
 		start = 0
 		for page in 1..pages
 			last = start + page_length
-
-			
-
-			pages_and_messages["#{page}"] = messages[start, last]					
+			pages_and_messages[page] = messages[start, last]					
 			start = last 
 		end
 		if @messages.size % page_length != 0
 			pages+=1
-			pages_and_messages["#{pages}"] = messages[start, messages.size - 1]
+			pages_and_messages[pages] = messages[start, messages.size - 1]
 		end		
 		return pages_and_messages
 	end
