@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   
 	def new
+		session[:return_url] = params[:return_url]
 		render :new
 	end
 	
@@ -10,7 +11,7 @@ class SessionsController < ApplicationController
 			redirect_to :back, notice:"User #{params[:username]} does not exist"
 	  	else
         		session[:user_id] = user.id
-        		redirect_to :root, notice:"Welcome #{params[:username]}"
+			redirect_to session[:return_url], notice:"Welcome #{params[:username]}"
       		end
 	end
 

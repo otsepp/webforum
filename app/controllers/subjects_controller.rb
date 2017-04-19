@@ -11,6 +11,17 @@ class SubjectsController < ApplicationController
   # GET /subjects/1.json
   def show
 	@messages = Message.where(:subject_id => @subject.id)
+
+	pages_and_messages = calculate_pages(@messages)
+	@pages = pages_and_messages.size
+
+	page = params[:page]	
+	if page.nil?
+		@messages = pages_and_messages[1]
+	else
+		@messages = pages_and_messages[page]
+	end
+
 	@has_rights = false
 	if current_user && current_user.can_edit_and_delete_subject(@subject)
 		@has_rights = true
@@ -74,6 +85,25 @@ class SubjectsController < ApplicationController
   end
 
   private
+
+	def calculate_pages(messages)
+		page_length = 5
+		pages = @messages.size / page_length
+		pages_and_messages = Hash.new 
+
+		start = 0
+		for page in 1..pages
+			last = start + page_length
+			pages_and_messages["#{page}"] = messages[start, last]					
+			start = last 
+		end
+		if @messages.size % page_length != 0
+			pages+=1
+			pages_and_messages["#{pages}"] = messages[start, messages.size - 1]
+		end		
+		return pages_and_messages
+	end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_subject
       @subject = Subject.find(params[:id])

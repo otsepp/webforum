@@ -18,6 +18,8 @@ class MessagesController < ApplicationController
 	@subject_id = params[:subject_id]
 	@user_id = params[:user_id]
 	@category_id = params[:category_id]
+	@subject = Subject.find_by(id: @subject_id)
+	#@message_replying = params[:message_replying]
   end
 
   # GET /messages/1/edit

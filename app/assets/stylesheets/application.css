@@ -82,6 +82,7 @@ th.wide-table-header {
 
 /*BUTTONS AND INPUTS*/
 input[type="submit"] {
+	font-family:  "Arial";
 	background-color: lightgreen; 
 	border: 1px solid black;
 	color: black;
@@ -93,6 +94,10 @@ input[type="text"] {
 	border: 1px solid gray;
 	color: black;
 	padding: 5px;
+}
+textarea {
+	width: 70%;
+	height: 150px;
 }
 .link-button {
 	background-color: white;
@@ -111,3 +116,4 @@ input[type="text"] {
 	background-color: IndianRed;
 	border-color: DarkRed;
 }
+

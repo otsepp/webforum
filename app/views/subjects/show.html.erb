@@ -6,6 +6,10 @@
 	<%= @subject.name %>	
 </div>
 
+<% if current_user %>
+	<p><%= link_to "new message", new_message_path(:subject_id => @subject.id, :user_id => current_user.id, :category_id => @subject.category.id), class:"link-button" %></p>
+<% end %>
+
 <p>
 <% @messages.each do |message| %>
 	<div class="message-top-bar" id="test"">
@@ -28,7 +32,10 @@
 			</div>
 		<% end %>
 
-		<div class="message-bottom-bar-btns"> 
+		<div class="message-bottom-bar-btns">
+			<!--<% if current_user %>
+				<%= link_to "reply", new_message_path(:subject_id => @subject.id, :user_id => current_user.id, :category_id => @subject.category.id, :message_replying => message), class:"link-button" %>
+			<% end %> -->
 			<% if current_user && current_user.can_edit_message(message) %>
 				<%= link_to 'edit', edit_message_path(message), class: "link-button", type:"edit-button" %>
 			<% end %>
@@ -40,11 +47,9 @@
 	</div>
 <% end %>
 
-<% if current_user %>
-	<p><%= link_to "new message", new_message_path(:subject_id => @subject.id, :user_id => current_user.id, :category_id => @subject.category.id), class:"link-button" %></p>
-<% end %>
-
 <% if @has_rights %>
-	<%= link_to 'edit', edit_subject_path(@subject), class:"link-button", type:"edit-button" %>
-	<%= link_to 'delete', @subject, method: :delete, data: { confirm: 'Are you sure?' }, class:"link-button", type:"delete-button" %>
+	<p>
+	<%= link_to 'edit subject', edit_subject_path(@subject), class:"link-button", type:"edit-button" %>
+	<%= link_to 'delete subject', @subject, method: :delete, data: { confirm: 'Are you sure?' }, class:"link-button", type:"delete-button" %>
+	</p>
 <% end %>
