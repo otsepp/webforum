@@ -24,9 +24,6 @@ class SubjectsController < ApplicationController
 		@messages = pages_and_messages[@page]
 	end
 
-	@has_prev_pages = false
-	@has_more_pages = false
-
 	if @page > 1
 		@has_prev_pages = true
 	end
