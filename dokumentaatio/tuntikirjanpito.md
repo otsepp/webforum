@@ -9,3 +9,6 @@ Päivä| Tunnit | Kuvaus
 1.4.2017 | 8h | etusivua vielä hiottu, etusivulle ja aiheet listaavalle sivulle lisää sisältöä ja ulkonäköä paranneltu, keskustelusivun parantelu alkuun, CSS:n harjoittelua
 2.4.2017 | 3h | keskustelusivun ulkönäkö ja sisältö, käyttäjille ns. signaturet, CSS:n harjoittelua
 3.4.2017 | 1h | CSS:n harjoittelua, erillinen CSS-tiedosto tietylle sivulle
+10.4.2017 |2h | moderator oikeudet
+11.4.2017 | 2h 30 min | kirjautumisen ja viestisivun parantelua, sivunumerointi alkuun (kontrollerissa)
+19.4.2017 | 1h 30 min | sivunumerointi loppuun kontrolleri ja view
