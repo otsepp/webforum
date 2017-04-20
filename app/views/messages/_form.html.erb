@@ -19,7 +19,7 @@
 
 	<% if creating %>
 		<%= f.hidden_field :subject_id, :value => @subject_id %>
-		<%= f.hidden_field :user_id, :value => @user_id %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
 		<%= f.hidden_field :category_id, :value => @category_id %>
 	<% end %>
 

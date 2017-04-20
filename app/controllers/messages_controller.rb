@@ -14,16 +14,28 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-   	@message = Message.new
-	@subject_id = params[:subject_id]
-	@user_id = params[:user_id]
-	@category_id = params[:category_id]
+	@message = Message.new
+	if params[:subject_id].nil?
+		@subject_id = session[:subject_id]
+		@category_id = session[:category_id]
+	else
+		@subject_id = params[:subject_id]
+		session[:subject_id] = @subject_id
+
+		@category_id = params[:category_id]
+		session[:category_id] = @category_id
+	end
 	@subject = Subject.find_by(id: @subject_id)
-	#@message_replying = params[:message_replying]
+	if !params[:last_page].nil?
+		session[:last_page] = params[:last_page]
+	end	
   end
 
   # GET /messages/1/edit
   def edit
+	if !params[:page].nil?
+		session[:page] = params[:page]
+	end
   end
 
   # POST /messages
@@ -32,10 +44,10 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message.subject, notice: 'Message was successfully created.' }
-        format.json { render :show, status: :created, location: @message }
+	format.html { redirect_to subject_path(@message.subject, :page => session[:last_page]), notice: 'Message was successfully created.' }
+        format.json { render :show, status: :created, location: @message }	
       else
-        format.html { render :new }
+	format.html { redirect_to new_message_path, notice:'errors'}
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
@@ -46,7 +58,7 @@ class MessagesController < ApplicationController
   def update
     respond_to do |format|
       if @message.update(message_params)
-	format.html { redirect_to subject_path(@message.subject), notice: 'Message was successfully updated.' }
+	format.html { redirect_to subject_path(@message.subject, :page => session[:page]), notice: 'Message was successfully updated.' }
         format.json { render :show, status: :ok, location: @message }
       else
         format.html { render :edit }
@@ -68,6 +80,7 @@ class MessagesController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_message
       @message = Message.find(params[:id])
