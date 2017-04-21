@@ -10,8 +10,7 @@
 	<div class="new-message-box">
 		<%= link_to "new message", 
 			new_message_path(:subject_id => @subject.id,
-							    :category_id => @subject.category.id,
-							    :last_page => @last_page),
+							    :category_id => @subject.category.id),
 			 class:"link-button" %>
 	</div>
 <% end %>
@@ -68,7 +67,6 @@
 				<%= link_to "reply", new_message_path(
 					:subject_id => @subject.id, 
 					:category_id => @subject.category.id, 
-					:last_page => @last_page,
 					:message_replying => message),
 	 			class:"link-button" %>
 			<% end %>

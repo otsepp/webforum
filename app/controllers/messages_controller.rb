@@ -27,8 +27,6 @@ class MessagesController < ApplicationController
 	end
 	@subject = Subject.find_by(id: @subject_id)
 
-		
-
 	if params[:message_replying].nil?
 		@message_replying = session[:message_replying]
 		
@@ -56,7 +54,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     respond_to do |format|
       if @message.save
-	format.html { redirect_to subject_path(@message.subject, :page => session[:last_page]), notice: 'Message was successfully created.' }
+	format.html { redirect_to subject_path(@message.subject, :page => @message.subject.calculate_page_count), notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }	
       else
 	format.html { redirect_to new_message_path, notice:'errors'}
