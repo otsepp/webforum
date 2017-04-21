@@ -35,6 +35,8 @@ class SubjectsController < ApplicationController
 	if current_user && current_user.can_edit_and_delete_subject(@subject)
 		@has_rights = true
 	end
+	
+	session[:message_replying] = nil
   end
 
   # GET /subjects/new
@@ -97,7 +99,12 @@ class SubjectsController < ApplicationController
 
 	def calculate_pages(messages)
 		page_length = 5
+
 		pages = @messages.size / page_length
+		if !@messages.empty? && pages == 0
+			pages = 1
+		end
+
 		pages_and_messages = Hash.new 
 
 		start = 0
@@ -106,10 +113,10 @@ class SubjectsController < ApplicationController
 			pages_and_messages[page] = messages[start, last]					
 			start = last 
 		end
-		if @messages.size % page_length != 0
+		if @messages.size > page_length && @messages.size % page_length != 0
 			pages+=1
 			pages_and_messages[pages] = messages[start, messages.size - 1]
-		end		
+		end	
 		return pages_and_messages
 	end
 

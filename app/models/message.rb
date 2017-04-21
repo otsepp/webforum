@@ -9,4 +9,8 @@ class Message < ActiveRecord::Base
 		return created_at.strftime("%H:%M:%S - %d.%m.%y")
 	end	
 
+	def quote
+		return Message.find_by(id: quote_id)
+	end
+
 end

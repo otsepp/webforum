@@ -8,8 +8,7 @@ class Category < ActiveRecord::Base
 
 	def last_message	
 		if !messages.empty?
-			t = messages.order('created_at desc').first.created_at
-			return t.strftime("%H:%M:%S - %d.%m.%y")
+			return messages.order('created_at desc').first.created_at_formatted
 		end
 		return nil
 	end

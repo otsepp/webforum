@@ -26,9 +26,21 @@ class MessagesController < ApplicationController
 		session[:category_id] = @category_id
 	end
 	@subject = Subject.find_by(id: @subject_id)
+
+		
+
+	if params[:message_replying].nil?
+		@message_replying = session[:message_replying]
+		
+	else
+		@message_replying = params[:message_replying]
+		session[:message_replying] = params[:message_replying]
+	end
+	@message_replying = Message.find_by(id: @message_replying)
+
 	if !params[:last_page].nil?
 		session[:last_page] = params[:last_page]
-	end	
+	end
   end
 
   # GET /messages/1/edit
@@ -88,6 +100,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:content, :subject_id, :user_id, :category_id)
+      params.require(:message).permit(:content, :subject_id, :user_id, :category_id, :quote_id)
     end
 end

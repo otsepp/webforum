@@ -16,10 +16,17 @@
 	border: 1px solid black;
 	padding: 5px;
 }
-.message-bottom-bar-content, .message-bottom-bar-signature {
+
+.message-bottom-bar-quote {
+	background-color: lightgray; 
+	padding: 4px;
+	border: 1px solid black;
+}
+
+.message-bottom-bar-quote, .message-bottom-bar-content, .message-bottom-bar-signature {
 	width: 80%;
 }
-.message-bottom-bar-content p, .message-bottom-bar-signature p {
+.message-bottom-bar-quote p, .message-bottom-bar-content p, .message-bottom-bar-signature p {
 	margin: 0px;
 }
 .message-bottom-bar-signature {
