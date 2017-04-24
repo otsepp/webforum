@@ -43,11 +43,7 @@ class SubjectsController < ApplicationController
   def new
 	@subject = Subject.new
 	@subject.messages.build
-	@category_id = params[:category_id]
-	@user_id = params[:user_id]
-	if current_user && @user_id == "#{current_user.id}"
-		@has_rights = true
-	end
+	@category = Category.find_by(id: params[:category_id])
   end
 
   # GET /subjects/1/edit

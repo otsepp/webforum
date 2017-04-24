@@ -1,4 +1,9 @@
-<% if @has_rights %>
+<div class="nav-tree">	
+	<%= link_to "Categories", categories_path %> > 
+	<%= link_to @category.name, @category %>	
+</div>
+
+<% if current_user %>
 	<h2>New Subject</h2>
 	<%= render 'form', { :creating => true }  %>
 <% else %>

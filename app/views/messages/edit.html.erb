@@ -1,3 +1,12 @@
-<h2>Editing Message</h2>
+<div class="nav-tree">	
+	<%= link_to "Categories", categories_path %> > 
+	<%= link_to @subject.category.name, @subject.category %> >
+	<%= link_to @subject.name, @subject %>	
+</div>
 
-<%= render 'form', { :creating => false } %>
+<% if @has_rights %>
+	<h2>Editing Message</h2>
+	<%= render 'form', { :creating => false } %>
+<% else %>
+	<%= render 'lacking_rights_partial' %>
+<% end %>

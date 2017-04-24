@@ -29,7 +29,6 @@ class MessagesController < ApplicationController
 
 	if params[:message_replying].nil?
 		@message_replying = session[:message_replying]
-		
 	else
 		@message_replying = params[:message_replying]
 		session[:message_replying] = params[:message_replying]
@@ -43,6 +42,10 @@ class MessagesController < ApplicationController
 
   # GET /messages/1/edit
   def edit
+	@subject = @message.subject
+	if current_user && current_user.can_edit_message(@message)
+		@has_rights = true
+	end
 	if !params[:page].nil?
 		session[:page] = params[:page]
 	end

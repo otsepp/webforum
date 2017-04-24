@@ -1,11 +1,24 @@
-<h2>New message to subject: <%= @subject.name %></h2>
+<!--<h2>New message to subject: <%= @subject.name %></h2>-->
 
-<% if @message_replying %>
-	<div class="message-bottom-bar-quote">
-				<strong><%= link_to @message_replying.user.username, @message_replying.user %> said..</strong>
-				<%= simple_format(@message_replying.content) %>
-	</div>
-	<br>
+
+
+<div class="nav-tree">	
+	<%= link_to "Categories", categories_path %> > 
+	<%= link_to @subject.category.name, @subject.category %> >
+	<%= link_to @subject.name, @subject %>	
+</div>
+
+<h2>Creating new message</h2>
+
+<% if current_user %>
+	<% if @message_replying %>
+		<div class="message-bottom-bar-quote">
+					<strong><%= link_to @message_replying.user.username, @message_replying.user %> said..</strong>
+					<%= simple_format(@message_replying.content) %>
+		</div>
+		<br>
+	<% end %>
+	<%= render 'form', { :creating => true }%>
+<% else %>
+	<%= render 'lacking_rights_partial' %>
 <% end %>
-
-<%= render 'form', { :creating => true }%>
