@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170421130401) do
+ActiveRecord::Schema.define(version: 20170424063552) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20170421130401) do
     t.boolean "admin",                 default: false
     t.string  "signature"
     t.integer "moderator_category_id"
+    t.string  "password_digest"
   end
 
 end

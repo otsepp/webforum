@@ -57,5 +57,6 @@ gem 'rb-readline'
 
 ruby '2.3.1'
 
+gem 'bcrypt', '~> 3.1.7'
 
 

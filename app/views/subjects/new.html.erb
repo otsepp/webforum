@@ -1,2 +1,6 @@
-<h2>New Subject</h2>
-<%= render 'form', { :creating => true }  %>
+<% if @has_rights %>
+	<h2>New Subject</h2>
+	<%= render 'form', { :creating => true }  %>
+<% else %>
+	<%= render 'lacking_rights_partial' %>
+<% end %>

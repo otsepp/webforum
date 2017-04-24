@@ -1,3 +1,6 @@
-<h2>Editing Category</h2>
-
-<%= render 'form' %>
+<% if current_user && current_user.admin %>
+	<h2>Editing Category</h2>
+	<%= render 'form' %>
+<% else %>
+	<%= render 'lacking_rights_partial' %>
+<% end %>

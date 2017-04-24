@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
 	validates :username, presence: true, uniqueness: true
 
+	has_secure_password
+
 	#vain admin ja mod
 	def can_edit_and_delete_subject(subject)
 		if admin or moderator(subject.category)

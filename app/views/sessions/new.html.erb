@@ -1,5 +1,10 @@
 <h2>Sign in</h2>
 <%= form_tag session_path do %>
+	 <strong><%= label_tag :username, "username" %></strong>
 	 <p><%= text_field_tag :username, params[:name] %></p>
+
+	<strong><%= label_tag :password, "password" %></strong>
+	<p><%= password_field_tag :password, params[:password] %></p>
+
   	<%= submit_tag "Log in" %>
 <% end %>
