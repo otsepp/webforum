@@ -1,0 +1,74 @@
+/*  
+
+Main Colors (Lighest to darkest):
+#e6e6ff		-> Table data rows, Link button, Page nav button, , Reply page quote box
+#ccccff		-> Content box, Quotes
+#b3b3ff		-> Background
+#9999ff		-> Navibar, Table headers, Edit button, Message top bar, Submit button
+
+Other Colors:
+#993366		-> Delete button
+DarkBlue 	-> Edit button border
+DarkRed 	-> Delete button border
+*/
+
+body {
+	background-color: #b3b3ff;
+}
+.navibar {
+	background-color: #9999ff;
+}
+.notice {
+	
+}
+.content {
+	background-color: #ccccff;
+}
+th {
+	background-color: #9999ff;
+}
+td {
+	background-color: #e6e6ff;
+}
+input[type="submit"] {
+	background-color: #9999ff; 
+	color: black;
+}
+input[type="text"], input[type="password"] {	
+	color: black;
+}
+textarea {
+	
+}
+.link-button {
+	background-color: #e6e6ff;
+	border-color: black;
+}
+.link-button[type="edit-button"] {
+	background-color: #9999ff;
+	border-color: DarkBlue;
+}
+.link-button[type="delete-button"] {
+	background-color: #993366;
+	border-color: DarkRed;
+}
+.message-top-bar {
+	background-color: #9999ff;
+}
+.message-bottom-bar {
+	background-color: #e6e6ff;
+}
+.message-bottom-bar-quote {
+	background-color: #ccccff;
+}
+.message-bottom-bar-quote[type="reply"] {
+	background-color: #e6e6ff;
+}
+.message-bottom-bar-signature {
+	color: gray;
+}
+.page-nav-button {
+	background-color: #e6e6ff;
+}
+
+

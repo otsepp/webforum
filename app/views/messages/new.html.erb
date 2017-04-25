@@ -11,7 +11,7 @@
 
 <% if current_user %>
 	<% if @message_replying %>
-		<div class="message-bottom-bar-quote">
+		<div class="message-bottom-bar-quote", type="reply">
 					<strong><%= link_to @message_replying.user.username, @message_replying.user %> said..</strong>
 					<%= simple_format(@message_replying.content) %>
 		</div>

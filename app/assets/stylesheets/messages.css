@@ -3,8 +3,8 @@
 }
 
 .message-top-bar {
-	border: 1px solid black;
 	padding: 4px 3px;
+	border: 1px solid black;
 }
 .message-top-bar-date {
 	display: inline;
@@ -13,12 +13,11 @@
 	top: -13px;
 }
 .message-bottom-bar {
-	border: 1px solid black;
 	padding: 5px;
+	border: 1px solid black;
 }
 
 .message-bottom-bar-quote {
-	background-color: lightgray; 
 	padding: 4px;
 	border: 1px solid black;
 }
@@ -30,7 +29,6 @@
 	margin: 0px;
 }
 .message-bottom-bar-signature {
-	color: gray;
 	width: 60%;	
 }
 .message-bottom-bar-btns {	
@@ -54,6 +52,5 @@
 	display: inline;
 	text-decoration: none;
 	padding: 2px 5px;
-	background-color: lightgreen;
 	border-style: ridge;
 }

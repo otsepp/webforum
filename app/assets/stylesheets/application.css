@@ -14,13 +14,14 @@
  *= require_self
  */
 
-/* FOR APPLICATION PAGE PAGE */
+/* FOR APPLICATION PAGE */
+
 .navibar {
 	margin: auto;
 	width: 70%;
 	padding: 15px;
-	border: 2px solid black;
 	border-style: groove;
+	border: 1px solid black;
 }
 .navibar-logo {
 	margin: -20px;
@@ -75,32 +76,26 @@ th.wide-table-header {
 	width: 600px;
 }
 
-/* subjects/show*/
-.message-top-bar {
-	background-color: lightgray;
-}
-
 /*BUTTONS AND INPUTS*/
 input[type="submit"] {
-	font-family:  "Arial";
-	background-color: lightgreen; 
-	border: 1px solid black;
-	color: black;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	padding: 10px 25px;
     	font-size: 16px;
+	border: 1px solid black;
 }	
-input[type="text"] {	
-	background-color: white; 
-	border: 1px solid gray;
-	color: black;
+input[type="text"], input[type="password"]  {	
 	padding: 5px;
+	border: 1px solid gray;
 }
 textarea {
 	width: 70%;
 	height: 150px;
 }
+.content-input {
+	width: 70%;
+	height: 150px;
+}
 .link-button {
-	background-color: white;
 	border-style: ridge;
 	width: auto;
 	display: inline;
@@ -108,13 +103,9 @@ textarea {
 	text-decoration: none;
 }
 .link-button[type="edit-button"] {
-	background-color: lightblue;
-	border-color: DarkBlue;
 	display: inline;
 }
 .link-button[type="delete-button"] {
-	background-color: IndianRed;
-	border-color: DarkRed;
 	display: inline;
 }
 

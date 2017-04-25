@@ -13,24 +13,19 @@
   <% end %>
 
   <div class="field">
-    	<%= f.label :name %><br>
+    	<strong><%= f.label :name %></strong><br>
     	<%= f.text_field :name %>
 
 	<% if creating %>
 		<%= f.hidden_field :category_id, :value => @category.id %>
 		<%= f.hidden_field :user_id, :value => current_user.id %>		
-
-		<ul>
-			<%= f.fields_for :messages do |messages_form| %>
-				<li>
-					<%= messages_form.label :content %><br>
-					<%= messages_form.text_area :content %>
-					<%= messages_form.hidden_field :user_id, :value => current_user.id %>
-					<%= messages_form.hidden_field :category_id, :value => @category.id %>
-				</li>
-			<% end %>
-		</ul>
-
+		<br><br>
+		<%= f.fields_for :messages do |messages_form| %>
+			<strong><%= messages_form.label :content %></strong><br>
+			<%= messages_form.text_area :content %>
+			<%= messages_form.hidden_field :user_id, :value => current_user.id %>
+			<%= messages_form.hidden_field :category_id, :value => @category.id %>
+		<% end %>
 	<% end %>
 
   </div>
