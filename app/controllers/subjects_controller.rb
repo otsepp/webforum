@@ -35,7 +35,6 @@ class SubjectsController < ApplicationController
 	if current_user && current_user.can_edit_and_delete_subject(@subject)
 		@has_rights = true
 	end
-	
 	session[:message_replying] = nil
   end
 
@@ -43,7 +42,7 @@ class SubjectsController < ApplicationController
   def new
 	@subject = Subject.new
 	@subject.messages.build
-	@category = Category.find_by(id: params[:category_id])
+	setup_new_subject_params
   end
 
   # GET /subjects/1/edit
@@ -60,9 +59,11 @@ class SubjectsController < ApplicationController
     @subject = Subject.new(subject_params)
     respond_to do |format|
       if @subject.save
+	binding.pry
         format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
         format.json { render :show, status: :created, location: @subject }
       else
+	setup_new_subject_params
         format.html { render :new }
         format.json { render json: @subject.errors, status: :unprocessable_entity }
       end
@@ -95,6 +96,13 @@ class SubjectsController < ApplicationController
   end
 
   private
+
+	def setup_new_subject_params
+		if !params[:new_subject_category_id].nil?
+			session[:new_subject_category_id] = params[:new_subject_category_id]
+		end
+		@category = Category.find_by(id: session[:new_subject_category_id])	
+	end
 
 	def calculate_pages(messages)
 		page_length = 5

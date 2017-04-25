@@ -17,16 +17,16 @@
     	<%= f.text_field :name %>
 
 	<% if creating %>
-		<%= f.hidden_field :category_id, :value => @category_id %>
-		<%= f.hidden_field :user_id, :value => @user_id %>		
+		<%= f.hidden_field :category_id, :value => @category.id %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>		
 
 		<ul>
 			<%= f.fields_for :messages do |messages_form| %>
 				<li>
 					<%= messages_form.label :content %><br>
 					<%= messages_form.text_area :content %>
-					<%= messages_form.hidden_field :user_id, :value => @user_id %>
-					<%= messages_form.hidden_field :category_id, :value => @category_id %>
+					<%= messages_form.hidden_field :user_id, :value => current_user.id %>
+					<%= messages_form.hidden_field :category_id, :value => @category.id %>
 				</li>
 			<% end %>
 		</ul>

@@ -6,7 +6,7 @@
 	
 	<% if current_user %>
 		<div style="padding-top:10px;"></div>		
-		<%= link_to "new subject", new_subject_path(:category_id => @category.id), class: "link-button" %>
+		<%= link_to "new subject", new_subject_path(:new_subject_category_id => @category.id), class: "link-button" %>
 	<% end %>
 
 <% if !@subjects.empty? %>

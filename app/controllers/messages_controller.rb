@@ -15,40 +15,12 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
 	@message = Message.new
-	if params[:subject_id].nil?
-		@subject_id = session[:subject_id]
-		@category_id = session[:category_id]
-	else
-		@subject_id = params[:subject_id]
-		session[:subject_id] = @subject_id
-
-		@category_id = params[:category_id]
-		session[:category_id] = @category_id
-	end
-	@subject = Subject.find_by(id: @subject_id)
-
-	if params[:message_replying].nil?
-		@message_replying = session[:message_replying]
-	else
-		@message_replying = params[:message_replying]
-		session[:message_replying] = params[:message_replying]
-	end
-	@message_replying = Message.find_by(id: @message_replying)
-
-	if !params[:last_page].nil?
-		session[:last_page] = params[:last_page]
-	end
+	setup_new_message_params
   end
 
   # GET /messages/1/edit
   def edit
-	@subject = @message.subject
-	if current_user && current_user.can_edit_message(@message)
-		@has_rights = true
-	end
-	if !params[:page].nil?
-		session[:page] = params[:page]
-	end
+	setup_edit_message_params
   end
 
   # POST /messages
@@ -60,7 +32,9 @@ class MessagesController < ApplicationController
 	format.html { redirect_to subject_path(@message.subject, :page => @message.subject.calculate_page_count), notice: 'Message was successfully created.' }
         format.json { render :show, status: :created, location: @message }	
       else
-	format.html { redirect_to new_message_path, notice:'errors'}
+	setup_new_message_params
+	format.html { render :new }
+	#format.html { redirect_to new_message_path, notice:'errors'}
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
@@ -74,6 +48,7 @@ class MessagesController < ApplicationController
 	format.html { redirect_to subject_path(@message.subject, :page => session[:page]), notice: 'Message was successfully updated.' }
         format.json { render :show, status: :ok, location: @message }
       else
+	setup_edit_message_params
         format.html { render :edit }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
@@ -93,6 +68,37 @@ class MessagesController < ApplicationController
   end
 
   private
+
+	def setup_new_message_params
+		if !params[:subject_id].nil?
+		session[:subject_id] = params[:subject_id]
+		end
+		@subject = Subject.find_by(id: session[:subject_id])
+
+		if !params[:category_id].nil?
+			session[:category_id] = params[:category_id]
+		end
+		@category_id = session[:category_id]
+
+		if !params[:message_replying].nil?
+			session[:message_replying] = params[:message_replying] 		
+		end
+		@message_replying = Message.find_by(id: session[:message_replying])
+
+		if !params[:last_page].nil?
+			session[:last_page] = params[:last_page]
+		end
+	end
+
+	def setup_edit_message_params
+		@subject = @message.subject
+		if current_user && current_user.can_edit_message(@message)
+			@has_rights = true
+		end
+		if !params[:page].nil?
+			session[:page] = params[:page]
+		end
+	end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_message

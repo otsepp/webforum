@@ -11,14 +11,12 @@
     </div>
   <% end %>
 
-  
-
   <div class="field">
     <%= f.label :content %><br>
     <%= f.text_area :content %>
 
 	<% if creating %>
-		<%= f.hidden_field :subject_id, :value => @subject_id %>
+		<%= f.hidden_field :subject_id, :value => @subject.id %>
 		<%= f.hidden_field :user_id, :value => current_user.id %>
 		<%= f.hidden_field :category_id, :value => @category_id %>
 		<% if @message_replying %>
