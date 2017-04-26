@@ -15,13 +15,15 @@
 	<strong><%= f.label :username %> </strong>
 	<p><%= f.text_field :username %> </p><br>
 
-	<strong><%= f.label :password %></strong>
-    	<p><%= f.password_field :password %></p>
+	<% if @creating %>
+		<strong><%= f.label :password %></strong>
+	    	<p><%= f.password_field :password %></p>
 
-	<strong><%= f.label :password_confirmation %></strong>
-   	<p><%= f.password_field :password_confirmation  %></p>
+		<strong><%= f.label :password_confirmation %></strong>
+	   	<p><%= f.password_field :password_confirmation  %></p>
+	<% end %>
 
-	<% if !creating %>
+	<% if !@creating %>
 		<br>
 		<strong><%= f.label :signature %> </strong>
     		<p><%= f.text_area :signature %> </p>
