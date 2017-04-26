@@ -73,12 +73,7 @@ class MessagesController < ApplicationController
 		if !params[:subject_id].nil?
 		session[:subject_id] = params[:subject_id]
 		end
-		@subject = Subject.find_by(id: session[:subject_id])
-
-		if !params[:category_id].nil?
-			session[:category_id] = params[:category_id]
-		end
-		@category_id = session[:category_id]
+		@subject = Subject.find_by(id: session[:subject_id])		
 
 		if !params[:message_replying].nil?
 			session[:message_replying] = params[:message_replying] 		
@@ -107,6 +102,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:content, :subject_id, :user_id, :category_id, :quote_id)
+      params.require(:message).permit(:content, :subject_id, :user_id, :quote_id)
     end
 end

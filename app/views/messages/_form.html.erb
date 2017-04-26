@@ -18,7 +18,6 @@
 	<% if creating %>
 		<%= f.hidden_field :subject_id, :value => @subject.id %>
 		<%= f.hidden_field :user_id, :value => current_user.id %>
-		<%= f.hidden_field :category_id, :value => @category_id %>
 		<% if @message_replying %>
 			<%= f.hidden_field :quote_id, :value => @message_replying.id %>
 		<% end %>

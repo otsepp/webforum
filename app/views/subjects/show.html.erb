@@ -9,8 +9,7 @@
 <% if current_user %>
 	<div class="new-message-box">
 		<%= link_to "new message", 
-			new_message_path(:subject_id => @subject.id,
-							    :category_id => @subject.category.id),
+			new_message_path(:subject_id => @subject.id),
 			 class:"link-button" %>
 	</div>
 <% end %>
@@ -65,8 +64,7 @@
 		<div class="message-bottom-bar-btns">
 			<% if current_user %>
 				<%= link_to "reply", new_message_path(
-					:subject_id => @subject.id, 
-					:category_id => @subject.category.id, 
+					:subject_id => @subject.id,
 					:message_replying => message),
 	 			class:"link-button" %>
 			<% end %>
