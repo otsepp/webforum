@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 	has_many :subjects
 	belongs_to :moderator_category, class_name: "Category"
 
-	validates :username, presence: true, uniqueness: true
+	validates :username, :password, presence: true, uniqueness: true, length: { maximum: 30}
 
 	has_secure_password
 

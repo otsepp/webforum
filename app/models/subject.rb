@@ -4,7 +4,9 @@ class Subject < ActiveRecord::Base
 	has_many :messages, dependent: :destroy
  	accepts_nested_attributes_for :messages
 
-	validates :name, presence: true, uniqueness: true
+	validates :name, presence: true, uniqueness: true, length: { maximum: 50}
+	validates :category_id, :user_id, presence: true
+
 
 	def last_message	
 		if !messages.empty?

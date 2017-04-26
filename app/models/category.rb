@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
 
 	has_many :moderators, class_name: "User", foreign_key: "moderator_category_id"
 
-	validates :name, presence: true, uniqueness: true
+	validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
 
 	def last_message	
 		if !messages.empty?
