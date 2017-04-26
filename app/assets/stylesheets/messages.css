@@ -30,6 +30,7 @@
 }
 .message-bottom-bar-signature {
 	width: 60%;	
+	color: gray;
 }
 .message-bottom-bar-btns {	
 	position: relative;

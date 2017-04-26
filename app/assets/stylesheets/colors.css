@@ -18,9 +18,6 @@ body {
 .navibar {
 	background-color: #9999ff;
 }
-.notice {
-	
-}
 .content {
 	background-color: #ccccff;
 }
@@ -32,13 +29,6 @@ td {
 }
 input[type="submit"] {
 	background-color: #9999ff; 
-	color: black;
-}
-input[type="text"], input[type="password"] {	
-	color: black;
-}
-textarea {
-	
 }
 .link-button {
 	background-color: #e6e6ff;
@@ -63,9 +53,6 @@ textarea {
 }
 .message-bottom-bar-quote[type="reply"] {
 	background-color: #e6e6ff;
-}
-.message-bottom-bar-signature {
-	color: gray;
 }
 .page-nav-button {
 	background-color: #e6e6ff;
