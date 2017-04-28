@@ -9,10 +9,7 @@ class Subject < ActiveRecord::Base
 
 
 	def last_message	
-		if !messages.empty?
-			return messages.order('created_at desc').first.created_at_formatted
-		end
-		return nil
+		return messages.order('created_at desc').first.created_at_formatted
 	end
 
 	def calculate_page_count
