@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
   
 	def new
-		session[:return_url] = params[:return_url]
+		if !params[:return_url].nil?
+			session[:return_url] = params[:return_url]
+		else
+			session[:return_url]  = root_path
+		end
 		render :new
 	end
 	
