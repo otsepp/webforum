@@ -1,13 +1,20 @@
 
 <%= form_for(@subject) do |f| %>
-  <% if @subject.errors.any? %>
+
+
+
+  <% if @subject.errors.any? or @missing_content %>
     <div id="error_explanation">
-      <h2><%= pluralize(@subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
+      <h2>Errors prohibited this subject from being saved:</h2>
 
       <ul>
-      <% @subject.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+	      <% @subject.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+	      <% end %>
+
+		<% if @missing_content %>
+		<li>Content cannot be empty</li>
+		<% end %>
       </ul>
     </div>
   <% end %>
@@ -20,12 +27,15 @@
 		<%= f.hidden_field :category_id, :value => @category.id %>
 		<%= f.hidden_field :user_id, :value => current_user.id %>		
 		<br><br>
-		<%= f.fields_for :messages do |messages_form| %>
+
+		<strong><%= label_tag(:content, "Content") %></strong><br>
+		<%=text_area_tag(:content) %>
+
+		<!--<%= f.fields_for :messages do |messages_form| %>
 			<strong><%= messages_form.label :content %></strong><br>
 			<%= messages_form.text_area :content %>
 			<%= messages_form.hidden_field :user_id, :value => current_user.id %>
-			<%= messages_form.hidden_field :category_id, :value => @category.id %>
-		<% end %>
+		<% end %>-->
 	<% end %>
 
   </div>

@@ -41,7 +41,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/new
   def new
 	@subject = Subject.new
-	@subject.messages.build
+	#@subject.messages.build
 	setup_new_subject_params
   end
 
@@ -57,16 +57,24 @@ class SubjectsController < ApplicationController
   # POST /subjects.json
   def create
     @subject = Subject.new(subject_params)
-    respond_to do |format|
-      if @subject.save
-        format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
-        format.json { render :show, status: :created, location: @subject }
-      else
-	setup_new_subject_params
-        format.html { render :new }
-        format.json { render json: @subject.errors, status: :unprocessable_entity }
-      end
-    end
+
+	if !params[:content].empty?
+		respond_to do |format|
+	      if @subject.save 
+		first_message = Message.create(content: params[:content], user_id: current_user.id, subject_id: @subject.id)	
+		format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
+		format.json { render :show, status: :created, location: @subject }
+	      else
+		setup_new_subject_params
+		format.html { render :new }
+		format.json { render json: @subject.errors, status: :unprocessable_entity }
+	      end
+	    end
+	else 
+		setup_new_subject_params
+		@missing_content = true
+		render :new
+	end
   end
 
   # PATCH/PUT /subjects/1
@@ -101,6 +109,10 @@ class SubjectsController < ApplicationController
 			session[:new_subject_category_id] = params[:new_subject_category_id]
 		end
 		@category = Category.find_by(id: session[:new_subject_category_id])	
+
+		if !@missing_content
+			@missing_content = false
+		end
 	end
 
 	def calculate_pages(messages)
@@ -133,6 +145,7 @@ class SubjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:name, :category_id, :user_id, messages_attributes: [:id, :created_at, :update_at, :subject_id, :content, :user_id, :category_id])
+      #params.require(:subject).permit(:name, :category_id, :user_id, messages_attributes: [:id, :created_at, :update_at, :subject_id, :content, :user_id, :category_id])
+	params.require(:subject).permit(:name, :category_id, :user_id)
     end
 end
