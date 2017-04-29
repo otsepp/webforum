@@ -30,12 +30,6 @@
 
 		<strong><%= label_tag(:content, "Content") %></strong><br>
 		<%=text_area_tag(:content) %>
-
-		<!--<%= f.fields_for :messages do |messages_form| %>
-			<strong><%= messages_form.label :content %></strong><br>
-			<%= messages_form.text_area :content %>
-			<%= messages_form.hidden_field :user_id, :value => current_user.id %>
-		<% end %>-->
 	<% end %>
 
   </div>

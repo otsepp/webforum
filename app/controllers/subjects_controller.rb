@@ -41,7 +41,6 @@ class SubjectsController < ApplicationController
   # GET /subjects/new
   def new
 	@subject = Subject.new
-	#@subject.messages.build
 	setup_new_subject_params
   end
 

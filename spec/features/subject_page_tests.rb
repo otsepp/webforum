@@ -2,9 +2,8 @@ require 'rails_helper'
 include Helpers
 
 describe "Subject page" do
-	let!(:first_message) { FactoryGirl.create(:message) }
-	let!(:subject) { first_message.subject }
-
+	let(:first_message) { FactoryGirl.create(:message) }
+	let(:subject) { first_message.subject }
 	let(:creator) { first_message.user }
 	let(:user) { FactoryGirl.create(:user) }
 	let(:admin) { FactoryGirl.create(:user, admin: true) }
