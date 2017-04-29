@@ -75,6 +75,10 @@ class MessagesController < ApplicationController
 		end
 		@subject = Subject.find_by(id: session[:subject_id])		
 
+		if @subject.nil?
+			redirect_to :root, notice: "Subject was not found"
+		end
+
 		if !params[:message_replying].nil?
 			session[:message_replying] = params[:message_replying] 		
 		end

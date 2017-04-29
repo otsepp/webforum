@@ -32,7 +32,7 @@ describe "New subject page" do
 	end
 end
 
-describe "creating a subject" do
+describe "Creating a subject" do
 	let(:category) { FactoryGirl.create(:category) }
 	let(:user) { FactoryGirl.create(:user) }
 
