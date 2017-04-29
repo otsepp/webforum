@@ -4,22 +4,30 @@
 	<div style="padding-bottom: 10px"></div>
 <% end %>
 
-<table>
-	<thead>
-		<th class="wide-table-header"><strong>Category</strong></th>
-		<th><strong>Subject</strong></th>
-		<th><strong>Messages</strong></th>
-		<th><strong>Last message</strong></th>
-	</thead>
-	<tbody>
-		<% @categories.each do |category| %>
-      			<tr>
-        			<td><%= link_to category.name, category %></td>
-				<td class="centered-data-row"><%= category.subjects.count %></td>
-				<td  class="centered-data-row"><%= category.messages.count %></td>
-				<td  class="centered-data-row"><%= category.last_message %></td>
-      			</tr>
-   		 <% end %>
-	</tbody>
+<% if @categories %>
 
-</table>
+	<table>
+		<thead>
+			<th class="wide-table-header"><strong>Category</strong></th>
+			<th><strong>Subject</strong></th>
+			<th><strong>Messages</strong></th>
+			<th><strong>Last message</strong></th>
+		</thead>
+		<tbody>
+			<% @categories.each do |category| %>
+	      			<tr>
+					<td><%= link_to category.name, category %></td>
+					<td class="centered-data-row"><%= category.subjects.count %></td>
+					<td  class="centered-data-row"><%= category.messages.count %></td>
+					<td  class="centered-data-row"><%= category.last_message %></td>
+	      			</tr>
+	   		 <% end %>
+		</tbody>
+
+	</table>
+
+<% else %>
+
+<p>No categories exist</p>
+
+<% end %>

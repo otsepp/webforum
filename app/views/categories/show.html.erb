@@ -9,7 +9,7 @@
 		<%= link_to "new subject", new_subject_path(:new_subject_category_id => @category.id), class: "link-button" %>
 	<% end %>
 
-<% if !@subjects.empty? %>
+<% if @subjects %>
 	<p>
 	<table>
 		<thead>
@@ -32,6 +32,8 @@
 		</tbody>
 	</table>
 	</p>
+<% else %>
+	<p>There are no subjects here</p>
 <% end %>
 
 <% if current_user && current_user.admin %> 
