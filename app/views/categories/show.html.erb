@@ -9,7 +9,7 @@
 		<%= link_to "new subject", new_subject_path(:new_subject_category_id => @category.id), class: "link-button" %>
 	<% end %>
 
-<% if @subjects %>
+<% if !@subjects.empty? %>
 	<p>
 	<table>
 		<thead>
