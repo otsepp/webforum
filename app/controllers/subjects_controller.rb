@@ -30,7 +30,6 @@ class SubjectsController < ApplicationController
 	if @last_page - @page > 0 
 		@has_more_pages = true
 	end
-
 	@has_rights = false
 	if current_user && current_user.can_edit_and_delete_subject(@subject)
 		@has_rights = true
@@ -43,6 +42,9 @@ class SubjectsController < ApplicationController
 	@subject = Subject.new
 	#@subject.messages.build
 	setup_new_subject_params
+	if @category.nil? 
+		redirect_to :root, notice: "Category was not found"
+	end
   end
 
   # GET /subjects/1/edit

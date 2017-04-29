@@ -4,11 +4,34 @@ include Helpers
 describe "Subject page" do
 	let!(:first_message) { FactoryGirl.create(:message) }
 	let!(:subject) { first_message.subject }
-	let!(:creator) { first_message.user }
 
+	let(:creator) { first_message.user }
 	let(:user) { FactoryGirl.create(:user) }
 	let(:admin) { FactoryGirl.create(:user, admin: true) }
 	let(:mod) { FactoryGirl.create(:user, moderator_category_id: subject.category.id) }
+
+	describe "edit subject page" do
+		it "is denied to unsigned user and normal user" do
+			visit edit_subject_path(subject)
+			expect(page).to have_content("You lack the rights to this resource!")
+
+			sign_in(username: user.username, password: user.password)
+			visit edit_subject_path(subject)
+			expect(page).to have_content("You lack the rights to this resource!")
+		end
+
+		it "is allowed to admin" do
+			sign_in(username: admin.username, password: admin.password)
+			visit edit_subject_path(subject)
+			expect(page).to have_content("Editing Subject")
+		end
+
+		it "is allowed to mod" do
+			sign_in(username: mod.username, password: mod.password)
+			visit edit_subject_path(subject)
+			expect(page).to have_content("Editing Subject")
+		end
+	end
 
 	describe "message creation links" do 
 		before :each do
