@@ -30,10 +30,11 @@ class SubjectsController < ApplicationController
 	if @last_page - @page > 0 
 		@has_more_pages = true
 	end
-	@has_rights = false
+
 	if current_user && current_user.can_edit_and_delete_subject(@subject)
 		@has_rights = true
 	end
+
 	session[:message_replying] = nil
   end
 
@@ -42,9 +43,6 @@ class SubjectsController < ApplicationController
 	@subject = Subject.new
 	#@subject.messages.build
 	setup_new_subject_params
-	if @category.nil? 
-		redirect_to :root, notice: "Category was not found"
-	end
   end
 
   # GET /subjects/1/edit
@@ -58,25 +56,24 @@ class SubjectsController < ApplicationController
   # POST /subjects
   # POST /subjects.json
   def create
-    @subject = Subject.new(subject_params)
+    	@subject = Subject.new(subject_params)
 
-	if !params[:content].empty?
-		respond_to do |format|
-	      if @subject.save 
+	respond_to do |format|
+	      if @subject.valid? and !params[:content].empty?
+		@subject.save
 		first_message = Message.create(content: params[:content], user_id: current_user.id, subject_id: @subject.id)	
+
 		format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
 		format.json { render :show, status: :created, location: @subject }
 	      else
 		setup_new_subject_params
+		if params[:content].empty?
+			@missing_content = true
+		end
 		format.html { render :new }
 		format.json { render json: @subject.errors, status: :unprocessable_entity }
 	      end
 	    end
-	else 
-		setup_new_subject_params
-		@missing_content = true
-		render :new
-	end
   end
 
   # PATCH/PUT /subjects/1
@@ -110,10 +107,11 @@ class SubjectsController < ApplicationController
 		if !params[:new_subject_category_id].nil?
 			session[:new_subject_category_id] = params[:new_subject_category_id]
 		end
+
 		@category = Category.find_by(id: session[:new_subject_category_id])	
 
-		if !@missing_content
-			@missing_content = false
+		if @category.nil? 
+			redirect_to :root, notice: "Category was not found"
 		end
 	end
 

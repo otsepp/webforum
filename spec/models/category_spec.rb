@@ -12,7 +12,7 @@ RSpec.describe Category, type: :model do
 		expect(category.last_message).to eq(msg2.created_at_formatted)
 	end
 
-	it "return moderators" do 	
+	it "returns moderators" do 	
 		category = FactoryGirl.create(:category)
 		mod1 = FactoryGirl.create(:user)
 		mod2 = FactoryGirl.create(:user)

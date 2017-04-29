@@ -9,11 +9,11 @@
 
       <ul>
 	      <% @subject.errors.full_messages.each do |message| %>
-		<li><%= message %></li>
+			<li><%= message %></li>
 	      <% end %>
 
 		<% if @missing_content %>
-		<li>Content cannot be empty</li>
+			<li>Content cannot be empty</li>
 		<% end %>
       </ul>
     </div>
