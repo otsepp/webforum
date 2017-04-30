@@ -66,4 +66,5 @@ ruby '2.3.1'
 
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'seed_dump'
 

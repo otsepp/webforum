@@ -1,0 +1,68 @@
+Category.create!([
+  {name: "Gaming"},
+  {name: "Cars"}
+])
+Message.create!([
+  {subject_id: 1, content: "open discussion here!!", user_id: 1, quote_id: nil},
+  {subject_id: 1, content: "Right m8", user_id: 2, quote_id: 1},
+  {subject_id: 1, content: "Waargh", user_id: 2, quote_id: nil},
+  {subject_id: 1, content: "lmfao kid", user_id: 2, quote_id: 3},
+  {subject_id: 1, content: "faafaf", user_id: 2, quote_id: nil},
+  {subject_id: 1, content: "lol!!!!", user_id: 2, quote_id: nil},
+  {subject_id: 1, content: "yo!!!!", user_id: 2, quote_id: nil},
+  {subject_id: 1, content: "yadayda", user_id: 2, quote_id: nil},
+  {subject_id: 1, content: "suck my d", user_id: 2, quote_id: 9},
+  {subject_id: 1, content: "Lol @ this\r\n", user_id: 4, quote_id: nil},
+  {subject_id: 2, content: "General disc. here!\r\n", user_id: 3, quote_id: nil},
+  {subject_id: 1, content: "faafafafaf", user_id: 2, quote_id: 1},
+  {subject_id: 1, content: "Jaaaa", user_id: 3, quote_id: nil},
+  {subject_id: 1, content: "affaf", user_id: 3, quote_id: 18},
+  {subject_id: 4, content: "stuff here", user_id: nil, quote_id: nil},
+  {subject_id: 5, content: "Yadayada\r\n", user_id: nil, quote_id: nil},
+  {subject_id: 6, content: "blollzo!!!", user_id: nil, quote_id: nil},
+  {subject_id: 7, content: "ayayayya", user_id: 3, quote_id: nil},
+  {subject_id: 8, content: "stuff", user_id: 3, quote_id: nil},
+  {subject_id: 9, content: "stuf here", user_id: 3, quote_id: nil},
+  {subject_id: 10, content: "adasd", user_id: 3, quote_id: nil},
+  {subject_id: 1, content: "Woot", user_id: 3, quote_id: nil},
+  {subject_id: 1, content: "Woot\r\n", user_id: 3, quote_id: nil},
+  {subject_id: 1, content: "HMMMM....", user_id: 3, quote_id: 18},
+  {subject_id: 11, content: "kool", user_id: 3, quote_id: nil},
+  {subject_id: 12, content: "rs life", user_id: 3, quote_id: nil},
+  {subject_id: 1, content: "Yaaa", user_id: 3, quote_id: nil},
+  {subject_id: 7, content: "!!!!", user_id: 3, quote_id: 25},
+  {subject_id: 7, content: "???", user_id: 3, quote_id: 35},
+  {subject_id: 1, content: "Yeah\r\n", user_id: 3, quote_id: nil},
+  {subject_id: 1, content: "Wizzard sux", user_id: 7, quote_id: nil},
+  {subject_id: 8, content: "fuark", user_id: 7, quote_id: nil},
+  {subject_id: 8, content: "STFU !!!", user_id: 7, quote_id: 26},
+  {subject_id: 21, content: "OKKK", user_id: 3, quote_id: nil},
+  {subject_id: 22, content: "OK", user_id: 3, quote_id: nil},
+  {subject_id: 1, content: "Ok", user_id: 3, quote_id: nil},
+  {subject_id: 1, content: "!!!", user_id: 3, quote_id: 34}
+])
+Subject.create!([
+  {name: "Open discussion", category_id: 1, user_id: 1},
+  {name: "General discussion", category_id: 2, user_id: 3},
+  {name: "Stuff", category_id: nil, user_id: nil},
+  {name: "Yada", category_id: nil, user_id: nil},
+  {name: "bolloz", category_id: nil, user_id: nil},
+  {name: "kewl", category_id: 1, user_id: 3},
+  {name: "Ok", category_id: 1, user_id: 3},
+  {name: "Porsh", category_id: 2, user_id: 3},
+  {name: "KK", category_id: 2, user_id: 3},
+  {name: "Pc gaming", category_id: 1, user_id: 3},
+  {name: "rune", category_id: 1, user_id: 3},
+  {name: "Woop new one", category_id: 1, user_id: 3},
+  {name: "!!", category_id: 1, user_id: 3}
+])
+User.create!([
+  {username: "fisherman", admin: false, signature: nil, moderator_category_id: nil, password_digest: "$2a$10$zqtrkewYmDId7qGLFYpw3OEKr.1Kzr6ZzPbg/F8lcskb9C9d5GyAa"},
+  {username: "wizzard", admin: false, signature: nil, moderator_category_id: nil, password_digest: "$2a$10$rRVjc8PFH9/jh9vefZGT6.M/GJcAmiIobdEb11D0KchWy.LY40Squ"},
+  {username: "admin", admin: true, signature: "ASDASDASD", moderator_category_id: nil, password_digest: "$2a$10$lTlq8A4BPAJNlcFcZEmKUuCuDiA1pnasYawNVoEGDKaaueTVSUaEK"},
+  {username: "adolf", admin: false, signature: "1488", moderator_category_id: 1, password_digest: "$2a$10$qu/7HdYVTo.G1j8i5jd0OO1w5ZWmnaVM3bQJPAMMH0G26DMV.6w/K"},
+  {username: "tester", admin: false, signature: "yeah", moderator_category_id: nil, password_digest: "$2a$10$zmraxjxD/.Z6r6FyXX0nMe9WzldsW6x8gZQrUifHoaCOgFV5gREnK"},
+  {username: "kk", admin: false, signature: nil, moderator_category_id: nil, password_digest: "$2a$10$0PjGHs4xSCf5qgqCax3quu1aDzwIVNz.Gd5cPLQfhWmGLPRMrVjTm"},
+  {username: "magki", admin: false, signature: nil, moderator_category_id: nil, password_digest: "$2a$10$xrk3VGuDf8HspEaCg9oWleKi7neH4RDsH35HxUNuQRuInFPr.Mv1W"},
+  {username: "hitler", admin: false, signature: nil, moderator_category_id: 1, password_digest: "$2a$10$UhOg1G/bust7KL6ZG.wo0u2jFXKnYxsLEMDwHDXdyW.LiIR8p.tA."}
+])
