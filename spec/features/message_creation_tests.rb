@@ -16,6 +16,16 @@ describe "New message page" do
 		expect(current_path).to eq(root_path)
 		expect(page).to have_content("Subject was not found")
 	end
+
+	it "remembers subject in session" do
+		sign_in(username: user.username, password: user.password)
+
+		visit subject_path(subject)
+		click_link("new message")
+
+		visit new_message_path
+		expect(page).to have_content(subject.name)
+	end
 end
 
 describe "Creating a message" do
@@ -57,11 +67,22 @@ describe "Replying" do
 		click_link("reply")
 	end	
 
-	it "shows quote" do
-		expect(page).to have_content(message.content)
+	it "page shows quote" do
+		expect(page).to have_css("div", class:"message-bottom-bar-quote", text: message.content)
 	end
 
-	it "succeeds and redirects to last page" do
+	it "page remembers quote in session" do
+		visit new_message_path
+		expect(page).to have_css("div", class:"message-bottom-bar-quote", text: message.content)
+	end
+
+	it "page forgets quote" do
+		visit subject_path(subject)
+		click_link("new message")
+		expect(page).not_to have_css("div", class:"message-bottom-bar-quote", text: message.content)
+	end
+
+	it "succeeds and redirects to last page of subject" do
 		fill_in("message_content", with: "some content")
 		click_button("Create Message")
 		expect(Message.count).to eq(2)

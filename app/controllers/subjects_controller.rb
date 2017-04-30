@@ -34,8 +34,6 @@ class SubjectsController < ApplicationController
 	if current_user && current_user.can_edit_and_delete_subject(@subject)
 		@has_rights = true
 	end
-
-	session[:message_replying] = nil
   end
 
   # GET /subjects/new
