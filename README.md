@@ -19,6 +19,20 @@ Aiheena on webfoorumi. Webfoorumissa on käyttäjiä, eri kategorioita aiheille 
 * 	Eri käyttäjätyypeillä eri oikeudet eri toimintoihin
 
 **Käyttöohje**
+Admin voi luoda kategorioita.
+Kuka tahansa käyttäjä voi luoda aiheita ja viestejä. 
+Adminit ja kategorian moderaattorit voivat poistaa ja editoida aiheiden nimiä sekä poistaa viestejä (paitsi aiheen ensimmäistä viestiä). He ja viestin luoja voivat muokata viestien sisältöä. 
+Moderaattorien oikeudet tietenkin rajoittuvat omien kategorioidensa sisälle.
+
+Voit testata adminina tunnuksilla:
+	admin
+	pass
+Ja Gaming-kategorian moderaattorina tunnuksilla:
+	gamer_mod
+	pass
+
+**Testaus**
+
 
 
 ![Tuntikirjanpito](/dokumentaatio/tuntikirjanpito.md)
