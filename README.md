@@ -25,7 +25,7 @@ Aiheena on webfoorumi. Webfoorumissa on käyttäjiä, eri kategorioita aiheille 
 
 ![Kaavio](/dokumentaatio/KAAVIO.png)
 
-![Simplecov](/dokumentaatio/index.html)
+![Simplecov](https://htmlpreview.github.io/?https://github.com/otsepp/webforum/blob/master/dokumentaatio/simplecov/index.html#_AllFiles)
 
 [![Code Climate](https://codeclimate.com/github/otsepp/webforum.png)](https://codeclimate.com/github/otsepp/webforum)
 
