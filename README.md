@@ -41,6 +41,7 @@ Ja Gaming-kategorian moderaattorina tunnuksilla:
 	pass
 
 **Testaus**
+
 Kuten voi nähdä, käytännössä koko sovellus on testattu. Testaamatta on jäänyt muutama pieni asia, jotka tosin eivät ole oleellisia:
 
 *	Model-kontrollerin index-metodi (index-näkymään ei ole tehty ylimääräisiä muutoksia, joten turha testata)
