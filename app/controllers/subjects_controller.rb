@@ -11,6 +11,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/1.json
   def show
 	@messages = Message.where(:subject_id => @subject.id)
+
 	pages_and_messages = calculate_pages(@messages)
 
 	@page = params[:page]
@@ -44,10 +45,7 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/1/edit
   def edit
-	@has_rights = false
-	if current_user && current_user.can_edit_and_delete_subject(@subject)
-		@has_rights = true
-	end
+	setup_edit_subject_params
   end
 
   # POST /subjects
@@ -81,6 +79,7 @@ class SubjectsController < ApplicationController
         format.html { redirect_to @subject, notice: 'Subject was successfully updated.' }
         format.json { render :show, status: :ok, location: @subject }
       else
+	setup_edit_subject_params
         format.html { render :edit }
         format.json { render json: @subject.errors, status: :unprocessable_entity }
       end
@@ -99,6 +98,11 @@ class SubjectsController < ApplicationController
   end
 
   private
+	def setup_edit_subject_params 
+		if current_user && current_user.can_edit_and_delete_subject(@subject)
+		@has_rights = true
+		end
+	end
 
 	def setup_new_subject_params
 		if !params[:new_subject_category_id].nil?

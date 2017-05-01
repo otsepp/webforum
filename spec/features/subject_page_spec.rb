@@ -7,30 +7,7 @@ describe "Subject page" do
 	let(:creator) { first_message.user }
 	let(:user) { FactoryGirl.create(:user) }
 	let(:admin) { FactoryGirl.create(:user, admin: true) }
-	let(:mod) { FactoryGirl.create(:user, moderator_category_id: subject.category.id) }
-
-	describe "edit subject page" do
-		it "is denied to unsigned user and normal user" do
-			visit edit_subject_path(subject)
-			expect(page).to have_content("You lack the rights to this resource!")
-
-			sign_in(username: user.username, password: user.password)
-			visit edit_subject_path(subject)
-			expect(page).to have_content("You lack the rights to this resource!")
-		end
-
-		it "is allowed to admin" do
-			sign_in(username: admin.username, password: admin.password)
-			visit edit_subject_path(subject)
-			expect(page).to have_content("Editing Subject")
-		end
-
-		it "is allowed to mod" do
-			sign_in(username: mod.username, password: mod.password)
-			visit edit_subject_path(subject)
-			expect(page).to have_content("Editing Subject")
-		end
-	end
+	let(:mod) { FactoryGirl.create(:user, moderator_category_id: subject.category.id) }	
 
 	describe "message creation links" do 
 		before :each do
@@ -110,24 +87,35 @@ describe "Subject page" do
 	end
 
 	describe "delete message -button" do
+		let(:another_message) { FactoryGirl.create(:message) }
+		before :each do
+			subject.messages << another_message
+		end
+
 		it "is not shown to unsigned and normal users" do 
 			visit subject_path(subject)
-			expect(page).not_to have_link("delete", href: '/messages/1')
+			expect(page).not_to have_link("delete", href: '/messages/2')
 
 			sign_in(username: creator.username, password: creator.password) 
-			expect(page).not_to have_link("delete", href: '/messages/1')
+			expect(page).not_to have_link("delete", href: '/messages/2')
 		end
 
 		it "is shown admin" do 
 			sign_in(username: admin.username, password: admin.password) 
 			visit subject_path(subject)
-			expect(page).to have_link("delete", href: '/messages/1')
+			expect(page).to have_link("delete", href: '/messages/2')
 		end
 
 		it "is shown to mod" do
 			sign_in(username: mod.username, password: mod.password) 
 			visit subject_path(subject)
-			expect(page).to have_link("delete", href: '/messages/1')
+			expect(page).to have_link("delete", href: '/messages/2')
+		end
+
+		it "is not shown for first message" do
+			sign_in(username: admin.username, password: admin.password) 
+			visit subject_path(subject)
+			expect(page).not_to have_link("delete", href: '/messages/1')
 		end
 	end
 
@@ -176,5 +164,8 @@ describe "Subject page" do
 			expect(page).to have_css("div", class: "page-nav-button", text:"1")
 		end
 	end
-
 end
+
+
+
+

@@ -73,7 +73,7 @@
 				<%= link_to 'edit', edit_message_path(message, :page => @page), class: "link-button", type:"edit-button" %>
 			<% end %>
 
-			<% if current_user && current_user.can_delete_message(message) %>
+			<% if current_user && current_user.can_delete_message(message) && message != @subject.messages.first%>
 				<%= link_to 'delete', message, method: :delete, data: { confirm: 'Are you sure?' }, class: "link-button", type:"delete-button" %>
 			<% end %>
 		</div>
