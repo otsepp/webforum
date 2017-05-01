@@ -44,5 +44,3 @@ Ja Gaming-kategorian moderaattorina tunnuksilla:
 [![Build Status](https://travis-ci.org/otsepp/webforum.png)](https://travis-ci.org/otsepp/webforum)
 
 [![Coverage Status](https://coveralls.io/repos/github/otsepp/webforum/badge.svg?branch=master)](https://coveralls.io/github/otsepp/webforum?branch=master)
-
-[Simplecov](https://htmlpreview.github.io/?https://github.com/otsepp/webforum/blob/master/dokumentaatio/simplecov/index.html#_AllFiles)
