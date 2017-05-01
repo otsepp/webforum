@@ -1,3 +1,7 @@
-<h2>Editing User</h2>
+<h2>Editing User: <%= @user.username %> </h2>
 
-<%= render 'form' %>
+<% if @has_rights %>
+	<%= render 'form' %>
+<% else %> 
+	<%= render 'lacking_rights_partial' %>
+<% end %>

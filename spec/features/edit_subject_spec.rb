@@ -11,11 +11,11 @@ describe "Edit subject page" do
 
 	it "is denied to unsigned user and normal user" do
 			visit edit_subject_path(subject)
-			expect(page).to have_content("You lack the rights to this resource!")
+			expect(page).to have_content(lacking_right_message)
 
 			sign_in(username: user.username, password: user.password)
 			visit edit_subject_path(subject)
-			expect(page).to have_content("You lack the rights to this resource!")
+			expect(page).to have_content(lacking_right_message)
 		end
 
 		it "is allowed to admin" do

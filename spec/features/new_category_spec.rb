@@ -4,14 +4,14 @@ include Helpers
 describe "New category page" do 
 	it "is denied to unsigned users" do
 		visit new_category_path
-		expect(page).to have_content("You lack the rights to this resource!")
+		expect(page).to have_content(lacking_right_message)
 	end 
 
 	it "is denied to non-admin users" do 
 		user = FactoryGirl.create(:user)
 		sign_in(username: user.username, password: user.password)
 		visit new_category_path
-		expect(page).to have_content("You lack the rights to this resource!")
+		expect(page).to have_content(lacking_right_message)
 	end
 
 	it "isn't denied to admins" do 

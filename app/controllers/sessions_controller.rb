@@ -1,12 +1,16 @@
 class SessionsController < ApplicationController
   
 	def new
-		if !params[:return_url].nil?
-			session[:return_url] = params[:return_url]
-		else
-			session[:return_url]  = root_path
+		if current_user
+			redirect_to :root
+		else 
+			if !params[:return_url].nil?
+				session[:return_url] = params[:return_url]
+			else
+				session[:return_url]  = root_path
+			end
+			render :new
 		end
-		render :new
 	end
 	
 	def create
@@ -20,9 +24,10 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-		#session[:user_id] = nil
 		reset_session
 		redirect_to :back
+	rescue ActionController::RedirectBackError
+		redirect_to :root	
 	end
 
 end

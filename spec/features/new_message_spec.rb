@@ -8,7 +8,7 @@ describe "New message page" do
 
 	it "is denied to unsigned users" do
 		visit "messages/new?subject_id=#{subject.id}"
-		expect(page).to have_content("You lack the rights to this resource!")
+		expect(page).to have_content(lacking_right_message)
 	end
 
 	it "redirects when subject isn't found" do

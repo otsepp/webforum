@@ -6,14 +6,14 @@ describe "Edit category page" do
 
 	it "is denied to unsigned users" do
 		visit edit_category_path(category)
-		expect(page).to have_content("You lack the rights to this resource!")
+		expect(page).to have_content(lacking_right_message)
 	end 
 
 	it "is denied to non-admin users" do 
 		user = FactoryGirl.create(:user)
 		sign_in(username: user.username, password: user.password)
 		visit edit_category_path(category)
-		expect(page).to have_content("You lack the rights to this resource!")
+		expect(page).to have_content(lacking_right_message)
 	end
 
 	it "isn't denied to admins" do 

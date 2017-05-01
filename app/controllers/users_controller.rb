@@ -15,13 +15,17 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
-	@creating = true
+	if current_user 
+		redirect_to :root
+	else 
+		@user = User.new
+		@creating = true
+	end
   end
 
   # GET /users/1/edit
   def edit
-	@creating  = false
+	setup_edit_params
   end
 
   # POST /users
@@ -34,6 +38,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
+	@creating = true
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -48,6 +53,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
+	setup_edit_params
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -65,6 +71,13 @@ class UsersController < ApplicationController
   end
 
   private
+
+	def setup_edit_params
+		if current_user && current_user == @user
+			@has_rights = true
+		end
+	end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])

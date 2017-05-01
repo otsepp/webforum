@@ -13,7 +13,7 @@ describe "New subject page" do
 
 	it "is denied to unsigned user" do
 		visit "subjects/new?new_subject_category_id=#{category.id}"
-		expect(page).to have_content("You lack the rights to this resource!")
+		expect(page).to have_content(lacking_right_message)
 	end
 
 	it "is allowed to signed user" do

@@ -7,4 +7,8 @@ module Helpers
     click_button('Log in')
   end
 
+  def lacking_right_message
+	return "You lack the rights to this resource!"
+  end
+
 end
