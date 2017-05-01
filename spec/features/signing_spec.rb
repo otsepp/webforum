@@ -81,12 +81,15 @@ describe "Signing out" do
 	let(:category) { FactoryGirl.create(:category) }
 	let(:user) { FactoryGirl.create(:user)}
 
-	before :each do
-		sign_in(username: user.username, password: user.password)
-		visit category_path(category)
+	it "doesnt cause error when user isnt logged in" do
+		visit signout_path
+		expect(current_path).to eq(root_path)
 	end
 
 	it "succeeds and redirect to last page" do
+		sign_in(username: user.username, password: user.password)
+		visit category_path(category)
+
 		click_link("sign out")
 		expect(page).to have_content("sign in")
 		expect(current_path).to eq(category_path(category))

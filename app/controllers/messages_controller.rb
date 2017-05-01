@@ -76,10 +76,6 @@ class MessagesController < ApplicationController
 			session[:message_replying] = params[:message_replying] 		
 		end
 		@message_replying = Message.find_by(id: session[:message_replying])
-
-		if !params[:last_page].nil?
-			session[:last_page] = params[:last_page]
-		end
 	end
 
 	def setup_edit_message_params
