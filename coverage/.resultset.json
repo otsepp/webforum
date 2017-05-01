@@ -275,12 +275,6 @@
         null,
         null,
         1,
-        0,
-        null,
-        null,
-        null,
-        null,
-        1,
         43,
         null,
         43,
@@ -425,12 +419,6 @@
       "/home/longsword/Desktop/wpoHT/wpoHT/webforum/app/controllers/messages_controller.rb": [
         1,
         1,
-        null,
-        null,
-        null,
-        1,
-        0,
-        null,
         null,
         null,
         null,
@@ -631,6 +619,6 @@
         null
       ]
     },
-    "timestamp": 1493657975
+    "timestamp": 1493660981
   }
 }

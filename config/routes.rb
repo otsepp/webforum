@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :users
-  resources :messages
-  resources :subjects
+  resources :messages, :except => :index
+  resources :subjects, :except => :index
   resources :categories
   resource :session, only: [:new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
