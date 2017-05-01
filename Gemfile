@@ -44,6 +44,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'simplecov', require: false
 end
 
 group :development do
@@ -64,6 +65,8 @@ gem 'rb-readline'
 ruby '2.3.1'
 
 gem 'bcrypt', '~> 3.1.7'
+
+
 
 gem 'coveralls', require: false
 
