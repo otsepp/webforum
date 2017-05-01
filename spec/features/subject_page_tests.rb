@@ -130,4 +130,51 @@ describe "Subject page" do
 			expect(page).to have_link("delete", href: '/messages/1')
 		end
 	end
+
+	describe "page navigation buttons" do
+		#creates 14 messages -> total is 15, 3 pages
+		let!(:messages) do
+			for i in 0..14
+				subject.messages << FactoryGirl.create(:message, user: user)
+			end
+		end
+
+		before :each do
+			visit subject_path(subject)
+		end
+
+		it "doesn't show back buttons when on first page" do
+			expect(page).not_to have_css("a", class: "page-nav-button", text:"<")
+			expect(page).not_to have_css("a", class: "page-nav-button", text:"<<")
+		end
+
+		it "doesn't show forward buttons when on last page" do
+			click_link(">>")
+			expect(page).not_to have_css("a", class: "page-nav-button", text:">")
+			expect(page).not_to have_css("a", class: "page-nav-button", text:">>")
+		end
+
+		it "shows back and forward buttons correctly" do
+			click_link(">")
+			expect(page).to have_css("a", class: "page-nav-button", text:"<")
+			expect(page).to have_css("a", class: "page-nav-button", text:"<<")
+			expect(page).to have_css("a", class: "page-nav-button", text:">")
+			expect(page).to have_css("a", class: "page-nav-button", text:">>")
+		end
+
+		it "buttons work" do
+			click_link(">")
+			expect(page).to have_css("div", class: "page-nav-button", text:"2")
+
+			click_link("<")
+			expect(page).to have_css("div", class: "page-nav-button", text:"1")
+
+			click_link(">>")
+			expect(page).to have_css("div", class: "page-nav-button", text:"#{subject.calculate_page_count}")
+
+			click_link("<<")
+			expect(page).to have_css("div", class: "page-nav-button", text:"1")
+		end
+	end
+
 end

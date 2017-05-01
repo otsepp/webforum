@@ -16,6 +16,11 @@ Aiheena on webfoorumi. Webfoorumissa on käyttäjiä, eri kategorioita aiheille 
 
 *	Vastaaminen muiden viesteihin
 
+* 	Eri käyttäjätyypeillä eri oikeudet eri toimintoihin
+
+**Käyttöohje**
+
+
 ![Tuntikirjanpito](/dokumentaatio/tuntikirjanpito.md)
 
 ![Kaavio](/dokumentaatio/KAAVIO.png)
