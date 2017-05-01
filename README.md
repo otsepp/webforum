@@ -25,8 +25,10 @@ Aiheena on webfoorumi. Webfoorumissa on käyttäjiä, eri kategorioita aiheille 
 
 ![Kaavio](/dokumentaatio/KAAVIO.png)
 
-[Simplecov](https://htmlpreview.github.io/?https://github.com/otsepp/webforum/blob/master/dokumentaatio/simplecov/index.html#_AllFiles)
-
 [![Code Climate](https://codeclimate.com/github/otsepp/webforum.png)](https://codeclimate.com/github/otsepp/webforum)
 
 [![Build Status](https://travis-ci.org/otsepp/webforum.png)](https://travis-ci.org/otsepp/webforum)
+
+[![Coverage Status](https://coveralls.io/repos/github/otsepp/webforum/badge.svg?branch=master)](https://coveralls.io/github/otsepp/webforum?branch=master)
+
+[Simplecov](https://htmlpreview.github.io/?https://github.com/otsepp/webforum/blob/master/dokumentaatio/simplecov/index.html#_AllFiles)
