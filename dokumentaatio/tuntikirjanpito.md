@@ -16,6 +16,6 @@ Päivä| Tunnit | Kuvaus
 27-29.4.2017 | 8h | testauksen palautus muistiin, model testit, capybara testit, parempi toteutus aiheiden luonnille
 30.4.2017 | 1h | Hieman testejä
 1.5.2017 | 5h | Lisää testejä, virhekorjauksia
-5.5.2017 | 1h 30min | Seed data, pieniä korjauksia, testaamista käytännössä
+5.5.2017 | 2h 30min | Seed data, korjauksia, testaamista käytännössä
 
-yhteensä 66h 50min
+yhteensä 67h 50min
