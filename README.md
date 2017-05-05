@@ -57,4 +57,4 @@ Kuten voi nähdä, käytännössä koko sovellus on testattu. Testaamatta on jä
 
 [![Coverage Status](https://coveralls.io/repos/github/otsepp/webforum/badge.svg?branch=master)](https://coveralls.io/github/otsepp/webforum?branch=master)
 
-[Simplecov](https://cdn.rawgit.com/otsepp/webforum/ccf831da/dokumentaatio/simplecov/index.html)
+[Simplecov]()

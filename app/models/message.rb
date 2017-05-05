@@ -2,7 +2,9 @@ class Message < ActiveRecord::Base
 	belongs_to :subject
 	belongs_to :user
 
-	validates :content, presence: true, length: { maximum: 150}
+	validates :content, presence: true
+	validates_length_of :content, :maximum => 500, :too_long => "Message is too long (max 500 words)", :tokenizer => lambda {|str| str.scan(/\w+/) }
+
 	validates :subject_id, presence: true
 
 	def created_at_formatted

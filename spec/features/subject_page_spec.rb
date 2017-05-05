@@ -137,13 +137,13 @@ describe "Subject page" do
 		end
 
 		it "doesn't show forward buttons when on last page" do
-			click_link(">>")
+			all('a', :text => '>>')[0].click
 			expect(page).not_to have_css("a", class: "page-nav-button", text:">")
 			expect(page).not_to have_css("a", class: "page-nav-button", text:">>")
 		end
 
 		it "shows back and forward buttons correctly" do
-			click_link(">")
+			all('a', :text => '>')[0].click
 			expect(page).to have_css("a", class: "page-nav-button", text:"<")
 			expect(page).to have_css("a", class: "page-nav-button", text:"<<")
 			expect(page).to have_css("a", class: "page-nav-button", text:">")
@@ -151,16 +151,16 @@ describe "Subject page" do
 		end
 
 		it "buttons work" do
-			click_link(">")
+			all('a', :text => '>')[0].click
 			expect(page).to have_css("div", class: "page-nav-button", text:"2")
 
-			click_link("<")
+			all('a', :text => '<')[0].click
 			expect(page).to have_css("div", class: "page-nav-button", text:"1")
 
-			click_link(">>")
+			all('a', :text => '>>')[0].click
 			expect(page).to have_css("div", class: "page-nav-button", text:"#{subject.calculate_page_count}")
 
-			click_link("<<")
+			all('a', :text => '<<')[0].click
 			expect(page).to have_css("div", class: "page-nav-button", text:"1")
 		end
 	end
