@@ -12,6 +12,8 @@ u9 = User.create username: "cello", signature: "challenge me online", password: 
 u10 = User.create username: "price_isnt_right", password: "pass8", password_confirmation: "pass8"
 
 subj = Subject.create name: "Name some useless weapons in NES games", user_id: u2.id, category_id: c1.id
+c1.subjects.
+c1.subject << subj
 
 msg1 = Message.create content: "There are many great and memorable weapons in NES games. A few notable ones would be the Spread Gun from Contra/Super C, Metal Blade from Mega Man 2, Kiai (scrolls) from TMNT 1, Jump & Slash from Ninja Gaiden 1, so on and so forth...
 Most weapons acquired in NES games serve at least some purpose in helping you succeed. But there are ones that don't. Here are a few off the top of my head that are (in my opinion) useless:
