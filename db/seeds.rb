@@ -58,8 +58,7 @@ msg11 = Message.create content: "Many games have at least one useless weapon. If
 - Zelda 1- Magic Book. It's counterproductive. The flame can harm you and it slows down the Wand's firing speed.
 - Zelda II- For as late as it comes, Spell feels like it has little use. Fairy filled its place (escaping from dangerous enemies) until then.
 - Castlevania II- Diamonds yeah, Thorn Whip too.
-- Kid Icarus- The Map, Pencil, Torch. Takes so many items to make a map and the level of detail is nothing. Drawing a paper map in person serves the purpose. The Flaming Arrow, for the effort to get it doesn't deliver a reliable extra hit. There's no reason to get it before the Protective Crystal or Sacred Bow. ", 
-subject_id: subj.id, user_id: u10.id
+- Kid Icarus- The Map, Pencil, Torch. Takes so many items to make a map and the level of detail is nothing. Drawing a paper map in person serves the purpose. The Flaming Arrow, for the effort to get it doesn't deliver a reliable extra hit. There's no reason to get it before the Protective Crystal or Sacred Bow. ", subject_id: subj.id, user_id: u10.id
 
 msg12 = Message.create content: "Final Fantasy weapons I never use: They're not exactly useless but other weapons are better.
 -Wooden Staff

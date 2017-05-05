@@ -74,6 +74,8 @@
 <% if @has_rights %>
 	<%= link_to 'edit subject', edit_subject_path(@subject), class:"link-button", type:"edit-button" %>
 	<%= link_to 'delete subject', @subject, method: :delete, data: { confirm: 'Are you sure?' }, class:"link-button", type:"delete-button" %>
+<% else %>
+	<div style="padding: 1px; display: inline;"></div>
 <% end %>
 
 <%= render 'page_nav_partial' %>
