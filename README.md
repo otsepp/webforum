@@ -42,10 +42,11 @@ Ja Gaming-kategorian moderaattorina tunnuksilla:
 
 **Testaus**
 
-Kuten voi nähdä, käytännössä koko sovellus on testattu. Testaamatta on jäänyt muutama pieni asia, jotka tosin eivät ole oleellisia:
+Kuten voi nähdä, käytännössä koko sovellus on testattu. Testaamatta on jäänyt muutama pieni asia:
 
 *	Model-kontrollerin index-metodi (index-näkymään ei ole tehty ylimääräisiä muutoksia, joten turha testata)
 *	Model-kontrollerin destroy-metodi (tällä hetkellä ei ole mahdollista poistaa käyttäjiä, mutta jätin metodin tulevaisuuden varalta)
+* 	Ei näy rivikattavuudessa, mutta testaamatta jäi Subject-kontrollerin metodi, joka jakaa viestit sivuihin (olisi pitänyt!!)
 
 ![Tuntikirjanpito](/dokumentaatio/tuntikirjanpito.md)
 

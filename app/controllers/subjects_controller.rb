@@ -111,7 +111,7 @@ class SubjectsController < ApplicationController
 	end
 
 	def calculate_pages(messages)
-		page_length = 5
+		page_length = @subject.page_length
 
 		pages = @messages.size / page_length
 		if !@messages.empty? && pages == 0
@@ -122,13 +122,13 @@ class SubjectsController < ApplicationController
 
 		start = 0
 		for page in 1..pages
-			last = start + page_length
-			pages_and_messages[page] = messages[start, last]					
-			start = last 
+			last = start + (page_length - 1)
+			pages_and_messages[page] = messages[start, last]	
+			start = last  + 1
 		end
 		if @messages.size > page_length && @messages.size % page_length != 0
 			pages+=1
-			pages_and_messages[pages] = messages[start, messages.size - 1]
+			pages_and_messages[pages] = messages[start .. messages.size - 1]
 		end	
 		return pages_and_messages
 	end

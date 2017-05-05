@@ -13,7 +13,6 @@ class Subject < ActiveRecord::Base
 	end
 
 	def calculate_page_count
-		page_length = 5
 		pages = messages.size / page_length
 		if !messages.empty? && pages == 0
 			pages = 1
@@ -22,6 +21,10 @@ class Subject < ActiveRecord::Base
 			pages+=1
 		end	
 		return pages
+	end
+	
+	def page_length 
+		return 5
 	end
 
 end
